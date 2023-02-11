@@ -7,5 +7,5 @@ Make an implementation of the numerical methods seen in the semester in an execu
 
 ## Team
 * [Miguel Angel Cabrera](https://github.com/miguelco23)
-* [Gustavo Lopez]()
+* [Gustavo López]()
 * [Jairo Ruiz]()
