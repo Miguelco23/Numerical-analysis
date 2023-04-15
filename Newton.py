@@ -15,6 +15,10 @@ def Newton(f, derf, x0, tol, Nmax):
       cont = cont+1
       xant = xact
       fant = fact
-    x = xact
-    iter = cont
-    err = E
+      if E < tol
+        x = xact
+        ite = cont
+        err = E
+        print("La función tiene una raíz en, " x, "con una tolerancia de, " E, "y un número de iteraciones de " ite)
+      else
+        print("No tiene solucion")
