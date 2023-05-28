@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
+import * as Methods from './methods';
 import Modal from 'react-modal';
 import './HomePage.css';
 
 Modal.setAppElement('#root');
 
-const Biseccion = () => {
-    return (
-        <div id="biseccion">
-            <h2>Biseccion</h2>
-        </div>
-    );
-}
-
 const BusquedasInc = () => {
     return (
         <div id="BusquedasInc">
             <h2>Busquedas Incremenatales</h2>
+        </div>
+    );
+}
+
+const Cholesky = () => {
+    return (
+        <div id="Cholesky">
+            <h2>Cholesky</h2>
         </div>
     );
 }
@@ -93,9 +94,11 @@ const HomePage = () => {
     let selectedMethod = () => {
         switch (selectedButton) {
             case "biseccion":
-                return <Biseccion />;
+                return <Methods.Biseccion />;
             case "busquedasinc":
                 return <BusquedasInc />;
+            case "Cholesky":
+                return <Cholesky />;
             case "Crout":
                 return <Crout />;
             case "Doolittle":
@@ -106,8 +109,8 @@ const HomePage = () => {
                 return <PuntoFijo />;
             case "RaicesMultiples":
                 return <RaicesMultiples />;
-            case "ReglaFalsa":
-                return <reglaFalsa />;
+            case "reglaFalsa":
+                return <ReglaFalsa />;
             case "secante":
                 return <Secante />;
             default:
@@ -119,15 +122,16 @@ const HomePage = () => {
         <div className="home-page">
             <h1>Numerical Analysis</h1>
             <div className="grid">
-                <button onClick={() => handleOpenModal("biseccion")}>Biseccion</button>
-                <button onClick={() => handleOpenModal("busquedasinc")}>Busquedas incrementales</button>
-                <button onClick={() => handleOpenModal("Crout")}>Busquedas incrementales</button>
-                <button onClick={() => handleOpenModal("Doolittle")}>Busquedas incrementales</button>
-                <button onClick={() => handleOpenModal("Newton")}>Newton</button>
-                <button onClick={() => handleOpenModal("puntoFijo")}>Punto Fijo</button>
-                <button onClick={() => handleOpenModal("RaicesMultiples")}>Raices Multiples</button>
-                <button onClick={() => handleOpenModal("reglaFalsa")}>Regla Falsa</button>
-                <button onClick={() => handleOpenModal("secante")}>Secante</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("biseccion")}>Biseccion</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("busquedasinc")}>Busquedas incrementales</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Cholesky")}>Cholesky</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Crout")}>Busquedas incrementales</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Doolittle")}>Busquedas incrementales</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Newton")}>Newton</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("puntoFijo")}>Punto Fijo</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("RaicesMultiples")}>Raices Multiples</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("reglaFalsa")}>Regla Falsa</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("secante")}>Secante</button>
             </div>
 
             <Modal
@@ -137,7 +141,7 @@ const HomePage = () => {
                 overlayClassName="overlay"
             >
                 {selectedMethod()}
-                <button onClick={handleCloseModal}>Close</button>
+                <button onClick={handleCloseModal}>Cerrar</button>
             </Modal>
         </div>
     );
