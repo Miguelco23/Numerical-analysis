@@ -25,10 +25,32 @@ class MatrixSystemModel(BaseModel):
     A: list[list]
     b: list[int]
 
+class PuntoFijoModel(BaseModel):
+    f:str
+    g:str
+    x0:float
+    tol:float
+    nmax:int
+
+class BusquedaIncModel(BaseModel):
+    f:str
+    x0: float
+    h:float
+    nmax:int
+
 
 @app.get('/')
 def main():
     return "Hola que mas?"
+
+@app.post('/api/puntofijo')
+def solvePuntoFijo(input: PuntoFijoModel):
+    return({"Result":puntoFijo(input.f, input.g, input.x0,input.tol,input.nmax)})
+
+@app.post('/api/busquedainc')
+def SolveBusquedaInc(input: BusquedaIncModel):
+    return({"Result":busqueda_inc(input.f, input.x0, input.h,input.nmax)})
+
 
 @app.post('/api/crout')
 def solveCrout(input: MatrixSystemModel):

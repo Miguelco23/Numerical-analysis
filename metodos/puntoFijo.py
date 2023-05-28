@@ -20,7 +20,7 @@ def puntoFijo(f, g, x0, tol, nmax):
     print(f"iters = {iter}")
     print(f"Error = {Err}")
 
-    return(xact,iter,Err)
+    return({"x":xact,"iters":iter,"Error":Err})
 
 # Ejemplo de como utilizar
 # puntofijo("(e**-x)-x","(e**-x)",1,5*10**(-6),12)
