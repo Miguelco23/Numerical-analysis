@@ -1,141 +1,112 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Cholesky = () => {
-  const [matrix, setMatrix] = useState([[], [], []]);
-  const [z, setZ] = useState([]);
+  const [matrixSize, setMatrixSize] = useState(0);
+  const [matrixData, setMatrixData] = useState([]);
+  const [zData, setZData] = useState([]);
   const [result, setResult] = useState(null);
 
-  const handleMatrixChange = (rowIndex, columnIndex, value) => {
-    const updatedMatrix = [...matrix];
-    updatedMatrix[rowIndex][columnIndex] = value;
-    setMatrix(updatedMatrix);
+  const handleMatrixSizeChange = (event) => {
+    let size = parseInt(event.target.value);
+    if (event.target.value === ""){
+      size = 0;
+    }
+    setMatrixSize(size);
+    setMatrixData(Array(size).fill(Array(size).fill(0)));
+    setZData(Array(size).fill(0));
+    setResult(null);
   };
 
-  const handleZChange = (index, value) => {
-    const updatedZ = [...z];
-    updatedZ[index] = value;
-    setZ(updatedZ);
+  const handleMatrixInputChange = (event, rowIndex, colIndex) => {
+    const { value } = event.target;
+    setMatrixData((prevMatrix) => {
+      const updatedMatrix = [...prevMatrix];
+      updatedMatrix[rowIndex][colIndex] = parseFloat(value);
+      return updatedMatrix;
+    });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const requestData = {
-      matrix,
-      z,
+  const handleZInputChange = (event, index) => {
+    const { value } = event.target;
+    setZData((prevZ) => {
+      const updatedZ = [...prevZ];
+      updatedZ[index] = parseFloat(value);
+      return updatedZ;
+    });
+  };
+
+  const handleSubmit = async () => {
+    const requestBody = {
+      matrix: matrixData,
+      z: zData,
     };
 
+    // Realizar la llamada a la API fetch para enviar los datos
     try {
-      const response = await fetch('API_URL', {
-        method: 'POST',
+      const response = await fetch("URL_DE_TU_API", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestData),
+        body: JSON.stringify(requestBody),
       });
 
-      if (response.ok) {
-        const result = await response.json();
-        setResult(result);
-      } else {
-        console.log('Error:', response.status);
-      }
+      const data = await response.json();
+      setResult(data.result);
     } catch (error) {
-      console.log('Error:', error);
-      alert('Error:', error);
+      console.error("Error al realizar la llamada a la API:", error);
     }
+  };
+
+  const renderMatrixInputs = () => {
+    return matrixData.map((row, rowIndex) => (
+      <div key={rowIndex}>
+        {row.map((cell, colIndex) => (
+          <input
+            style={{width: "30px"}}
+            key={colIndex}
+            type="number"
+            onChange={(e) => handleMatrixInputChange(e, rowIndex, colIndex)}
+          />
+        ))}
+      </div>
+    ));
+  };
+
+  const renderZInputs = () => {
+    return zData.map((value, index) => (
+      <input
+        style={{width: "30px"}}
+        key={index}
+        type="number"
+        onChange={(e) => handleZInputChange(e, index)}
+      />
+    ));
   };
 
   return (
     <div>
-      <h2>Cholesky</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Matriz:</label>
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[0][0]}
-            onChange={(e) => handleMatrixChange(0, 0, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[0][1]}
-            onChange={(e) => handleMatrixChange(0, 1, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[0][2]}
-            onChange={(e) => handleMatrixChange(0, 2, e.target.value)}
-          />
-        </div>
-        <div style={{marginLeft: "50px"}}>
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[1][0]}
-            onChange={(e) => handleMatrixChange(1, 0, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[1][1]}
-            onChange={(e) => handleMatrixChange(1, 1, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[1][2]}
-            onChange={(e) => handleMatrixChange(1, 2, e.target.value)}
-          />
-        </div>
-        <div style={{marginLeft: "50px"}}>
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[2][0]}
-            onChange={(e) => handleMatrixChange(2, 0, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[2][1]}
-            onChange={(e) => handleMatrixChange(2, 1, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={matrix[2][2]}
-            onChange={(e) => handleMatrixChange(2, 2, e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Z:</label>
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={z[0]}
-            onChange={(e) => handleZChange(0, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={z[1]}
-            onChange={(e) => handleZChange(1, e.target.value)}
-          />
-          <input
-            type="number"
-            style={{width: "40px"}}
-            value={z[2]}
-            onChange={(e) => handleZChange(2, e.target.value)}
-          />
-        </div>
-        <button type="submit">Calcular</button>
-      </form>
+      <h2>Método de Cholesky</h2>
+      <div>
+        <label>Orden de la matriz:</label>
+        <input
+          type="number"
+          min="1"
+          onChange={handleMatrixSizeChange}
+        />
+      </div>
+      <div>
+        <label>Matriz:</label>
+        {renderMatrixInputs()}
+      </div>
+      <div>
+        <label>Vector Z:</label>
+        {renderZInputs()}
+      </div>
+      <button onClick={handleSubmit}>Calcular</button>
       {result && (
         <div>
-          <h3>Resultado</h3>
+          <h3>Resultado:</h3>
           <p>{result}</p>
         </div>
       )}
@@ -144,4 +115,5 @@ const Cholesky = () => {
 };
 
 export default Cholesky;
+
 
