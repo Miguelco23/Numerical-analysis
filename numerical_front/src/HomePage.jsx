@@ -13,14 +13,6 @@ const BusquedasInc = () => {
     );
 }
 
-const Crout = () => {
-    return (
-        <div id="Crout">
-            <h2>Crout</h2>
-        </div>
-    );
-}
-
 const Doolittle = () => {
     return (
         <div id="Doolittle">
@@ -92,7 +84,7 @@ const HomePage = () => {
             case "Cholesky":
                 return <Methods.Cholesky />;
             case "Crout":
-                return <Crout />;
+                return <Methods.Crout />;
             case "Doolittle":
                 return <Doolittle />;
             case "Newton":
@@ -117,8 +109,8 @@ const HomePage = () => {
                 <button className= "homeButton" onClick={() => handleOpenModal("biseccion")}>Biseccion</button>
                 <button className= "homeButton" onClick={() => handleOpenModal("busquedasinc")}>Busquedas incrementales</button>
                 <button className= "homeButton" onClick={() => handleOpenModal("Cholesky")}>Cholesky</button>
-                <button className= "homeButton" onClick={() => handleOpenModal("Crout")}>Busquedas incrementales</button>
-                <button className= "homeButton" onClick={() => handleOpenModal("Doolittle")}>Busquedas incrementales</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Crout")}>Crout</button>
+                <button className= "homeButton" onClick={() => handleOpenModal("Doolittle")}>Doolittle</button>
                 <button className= "homeButton" onClick={() => handleOpenModal("Newton")}>Newton</button>
                 <button className= "homeButton" onClick={() => handleOpenModal("puntoFijo")}>Punto Fijo</button>
                 <button className= "homeButton" onClick={() => handleOpenModal("RaicesMultiples")}>Raices Multiples</button>

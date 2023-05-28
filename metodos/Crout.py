@@ -1,6 +1,8 @@
 import numpy as np
 
 def crout(A, b):
+    A = np.array(A)
+    b = np.array(b)
     n = len(A)
     L = np.zeros((n, n))
     U = np.zeros((n, n))
@@ -29,11 +31,11 @@ def crout(A, b):
     return x
 
 
-# A = np.array([[36,3,-4,5],
+# A = [[36,3,-4,5],
 #               [5,-45,10,-2],
 #               [6,8,57,5],
-#               [2,3,-8,-42]])
+#               [2,3,-8,-42]]
 
-# b = np.array([-20,69,96,-32])
+# b = [-20,69,96,-32]
 
 # print(crout(A,b))
