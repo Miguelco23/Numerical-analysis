@@ -1,6 +1,8 @@
 import numpy as np
 
 def cholesky(A, b):
+    A = np.array(A)
+    b = np.array(b)
     n = len(A)
     L = np.zeros((n, n))
     x = np.zeros(n)
@@ -25,9 +27,9 @@ def cholesky(A, b):
 
     return x
 
-# A = np.array([[1,-1,1],
-#               [-1,5,-5],
-#               [1,-5,6]])
+# A = [[1,-1,1],
+#     [-1,5,-5],
+#     [1,-5,6]]
 
-# b = np.array([2,-6,9])
-# print(cholesky(A,b))
+# b = [2,-6,9]
+# print(cholesky(A,b)

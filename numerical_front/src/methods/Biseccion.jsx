@@ -5,7 +5,6 @@ const Biseccion = () => {
   const [b, setB] = useState('');
   const [func, setFunc] = useState('');
   const [tolerance, setTolerance] = useState('');
-  const [url, setUrl] = useState('');
   const [result, setResult] = useState('');
 
   const handleSubmit = async (e) => {
@@ -17,12 +16,9 @@ const Biseccion = () => {
       func,
       tolerance: parseFloat(tolerance),
     };
-    
-    //Setear la plantillad del url
-    setUrl(data.a + '-' + data.b + '-' + data.func + '-' + data.tolerance);
 
     try {
-      const response = await fetch(url, {
+      const response = await fetch('API_URL', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

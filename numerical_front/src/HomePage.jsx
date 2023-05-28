@@ -13,14 +13,6 @@ const BusquedasInc = () => {
     );
 }
 
-const Cholesky = () => {
-    return (
-        <div id="Cholesky">
-            <h2>Cholesky</h2>
-        </div>
-    );
-}
-
 const Crout = () => {
     return (
         <div id="Crout">
@@ -98,7 +90,7 @@ const HomePage = () => {
             case "busquedasinc":
                 return <BusquedasInc />;
             case "Cholesky":
-                return <Cholesky />;
+                return <Methods.Cholesky />;
             case "Crout":
                 return <Crout />;
             case "Doolittle":
