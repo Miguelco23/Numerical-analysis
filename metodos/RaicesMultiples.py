@@ -16,10 +16,10 @@ def Raices_Multiples(f, derf, doblederf, x0, tol, Nmax):
       cont = cont+1
       xant = xact
       fant = fact
-      if E < tol
+      if E < tol:
         x = xact
         ite = cont
         err = E
-        print("La función tiene raíz multiple en, " x, "con una tolerancia de, " E, "y un número de iteraciones de " ite)
-      else
-        print("No tiene solucion")
+        return "La función tiene raíz multiple en, ",  x, "con una tolerancia de, ", E, "y un número de iteraciones de ", ite
+      else:
+        return "No tiene solucion"
