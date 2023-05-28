@@ -25,5 +25,5 @@ a = 0
 b = 2
 tol = 1e-6
 
-raiz = biseccion(f, a, b, tol)
-print("La raíz de la función es:", raiz)
+# raiz = biseccion(f, a, b, tol)
+# print("La raíz de la función es:", raiz)

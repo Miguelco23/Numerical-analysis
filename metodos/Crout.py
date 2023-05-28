@@ -28,10 +28,10 @@ def crout(A, b):
     for i in range(n - 1, -1, -1):
         x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
 
-    return x
+    return np.array2string(x)
 
 
-# A = [[36,3,-4,5],
+# A =           [[36,3,-4,5],
 #               [5,-45,10,-2],
 #               [6,8,57,5],
 #               [2,3,-8,-42]]

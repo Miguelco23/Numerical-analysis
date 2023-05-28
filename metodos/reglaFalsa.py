@@ -31,5 +31,5 @@ a = 1
 b = 2
 tol = 1e-6
 
-raiz = regla_falsa(f, a, b, tol)
-print("La raíz de la función es:", raiz)
+# raiz = regla_falsa(f, a, b, tol)
+# print("La raíz de la función es:", raiz)

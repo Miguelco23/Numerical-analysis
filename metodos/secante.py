@@ -27,6 +27,6 @@ x0 = 1
 x1 = 2
 tol = 1e-6
 
-raiz = secante(f, x0, x1, tol)
-print("La raíz de la función es:", raiz)
+# raiz = secante(f, x0, x1, tol)
+# print("La raíz de la función es:", raiz)
 

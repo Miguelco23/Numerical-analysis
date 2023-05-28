@@ -26,7 +26,7 @@ def doolittle(A, b):
     for i in range(n - 1, -1, -1):
         x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
 
-    return x
+    return np.array2string(x)
 
 
 # A = np.array([[36,3,-4,5],

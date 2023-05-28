@@ -25,7 +25,7 @@ def cholesky(A, b):
     for i in range(n - 1, -1, -1):
         x[i] = (y[i] - np.dot(L[i + 1:, i], x[i + 1:])) / L[i, i]
 
-    return x
+    return np.array2string(x)
 
 # A = [[1,-1,1],
 #     [-1,5,-5],
