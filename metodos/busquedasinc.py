@@ -10,8 +10,8 @@ def busqueda_inc(f, x0, h, nmax):
     for i in range(nmax):
         print(f"{fant} {fact}")
         if fant * fact <0:
-            print(f"hay raiz entre {xant} y {xact}")
-            print(f"iters = {i}")
+            # print(f"hay raiz entre {xant} y {xact}")
+            # print(f"iters = {i}")
             return(f"Raiz esta entre {xant} y {xact}. Salida con {i} iteraciones") # Retorna dos limites de el intervalo y las iteraciones
         xant = xact
         fant = fact
@@ -20,4 +20,4 @@ def busqueda_inc(f, x0, h, nmax):
 
 
 # Ejemplo de como utilizar
-busqueda_inc("(x**3)+3*x+2",-2,0.0075,1000)
+# busqueda_inc("(x**3)+3*xk+2",-2,0.0075,1000)
