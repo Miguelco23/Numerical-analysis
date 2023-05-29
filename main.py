@@ -41,8 +41,13 @@ class BusquedaIncModel(BaseModel):
     x0: float
     h:float
     nmax:int
-
-
+class NewtonModel(BaseModel):
+    f:str
+    derf:str
+    x0:float
+    tol:float
+    nmax:int
+    
 @app.get('/')
 def main():
     return "Hola que mas?"
@@ -71,3 +76,7 @@ def solveCholesky(input: MatrixSystemModel):
     except:
         raise HTTPException(status_code=400, detail="revisar la matriz de entrada") 
     return result
+
+@app.post('/api/newton')
+def solveNewton(input: NewtonModel):
+    return({"Result":Newton(input.f, input.derf, input.x0,input.tol,input.nmax)})
