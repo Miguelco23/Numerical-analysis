@@ -113,4 +113,4 @@ def solveCholesky(input: MatrixSystemModel):
 
 @app.post('/api/Jacobi')
 def solveJacobi(input: JacobiModel):
-    return({"Result":crout(input.A, input.b, input.x0, input.tol, input.nmax)})
+    return({"Result":Jacobi(input.A, input.b, input.x0, input.tol, input.nmax)})
