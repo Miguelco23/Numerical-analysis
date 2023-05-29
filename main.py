@@ -48,7 +48,7 @@ class NewtonModel(BaseModel):
     tol:float
     nmax:int
     
-class RaicesMultiples(BaseModel):
+class RaicesMultiplesModel(BaseModel):
     f:str
     derf:str
     doblederf:str
@@ -56,7 +56,7 @@ class RaicesMultiples(BaseModel):
     tol:float
     nmax:int
  
-class Jacobi(BaseModel):
+class JacobiModel(BaseModel):
     A: list[list]
     b: list[int]
     x0:float
