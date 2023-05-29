@@ -20,14 +20,6 @@ const PuntoFijo = () => {
     );
 }
 
-const RaicesMultiples = () => {
-    return (
-        <div id="RaicesMultiples">
-            <h2>Raices Multiples</h2>
-        </div>
-    );
-}
-
 const ReglaFalsa = () => {
     return (
         <div id="ReglaFalsa">
@@ -75,7 +67,7 @@ const HomePage = () => {
             case "puntoFijo":
                 return <PuntoFijo />;
             case "RaicesMultiples":
-                return <RaicesMultiples />;
+                return <Methods.RaicesMultiples />;
             case "reglaFalsa":
                 return <ReglaFalsa />;
             case "secante":
