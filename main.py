@@ -7,7 +7,7 @@ from metodos.biseccion import biseccion
 from metodos.busquedasinc import busqueda_inc
 from metodos.Newton import Newton
 from metodos.puntoFijo import puntoFijo
-from metodos.RaicesMultiples import Raices_Multiples
+from metodos.RaicesMultiples import RaicesMultiples
 from metodos.reglaFalsa import regla_falsa
 from metodos.secante import secante
 from metodos.Crout import crout
