@@ -88,7 +88,7 @@ const HomePage = () => {
           Doolittle
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("GausSimple")}>
-          Gauss Sencilla
+          Eliminacion Gaussiana Sencilla
         </button>
       </div>
 

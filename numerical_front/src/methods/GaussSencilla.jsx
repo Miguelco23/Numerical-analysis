@@ -70,7 +70,7 @@ const GaussSencilla = () => {
 
   return (
     <div>
-      <h2>Gauss Sencilla</h2>
+      <h2>Eliminacion Gaussiana Sencilla</h2>
       <div>
         <label>Orden de la matriz:</label>
         <input type="number" min="1" onChange={handleMatrixSizeChange} />
