@@ -5,105 +5,110 @@ import Modal from 'react-modal';
 Modal.setAppElement('#root');
 
 const HomePage = () => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-    const [selectedButton, setSelectedButton] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedButton, setSelectedButton] = useState(null);
 
-    const handleOpenModal = (buttonId) => {
-        setSelectedButton(buttonId);
-        setModalIsOpen(true);
-    };
+  const handleOpenModal = (buttonId) => {
+    setSelectedButton(buttonId);
+    setModalIsOpen(true);
+  };
 
-    const handleCloseModal = () => {
-        setSelectedButton(null);
-        setModalIsOpen(false);
-    };
+  const handleCloseModal = () => {
+    setSelectedButton(null);
+    setModalIsOpen(false);
+  };
 
-    let selectedMethod = () => {
-        switch (selectedButton) {
-            case "biseccion":
-                return <Methods.Biseccion />;
-            case "busquedasinc":
-                return <Methods.BusquedasInc />;
-            case "Cholesky":
-                return <Methods.Cholesky />;
-            case "Crout":
-                return <Methods.Crout />;
-            case "Doolittle":
-                return <Methods.Doolittle />;
-            case "Newton":
-                return <Methods.Newton />;
-            case "puntoFijo":
-                return <Methods.PuntoFijo />;
-            case "RaicesMultiples":
-                return <Methods.RaicesMultiples />;
-            case "reglaFalsa":
-                return <Methods.ReglaFalsa />;
-            case "secante":
-                return <Methods.Secante />;
-            default:
-                return null;
-        }
-    };
+  let selectedMethod = () => {
+    switch (selectedButton) {
+      case "biseccion":
+        return <Methods.Biseccion />;
+      case "busquedasinc":
+        return <Methods.BusquedasInc />;
+      case "Cholesky":
+        return <Methods.Cholesky />;
+      case "Crout":
+        return <Methods.Crout />;
+      case "Doolittle":
+        return <Methods.Doolittle />;
+      case "Newton":
+        return <Methods.Newton />;
+      case "puntoFijo":
+        return <Methods.PuntoFijo />;
+      case "RaicesMultiples":
+        return <Methods.RaicesMultiples />;
+      case "reglaFalsa":
+        return <Methods.ReglaFalsa />;
+      case "secante":
+        return <Methods.Secante />;
+      case "GausSimple":
+        return <Methods.GaussSencilla />;
+      default:
+        return null;
+    }
+  };
 
-    return (
-        <div className="home-page">
-          <h1>Metodos Numericos</h1>
-      
-          <h2 className="sectionTitle">Ecuaciones de una variable</h2>
-          <div className="grid">
-            <button className="homeButton" onClick={() => handleOpenModal("biseccion")}>
-              Bisección
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("busquedasinc")}>
-              Búsquedas Incrementales
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("Newton")}>
-              Newton
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("puntoFijo")}>
-              Punto Fijo
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("RaicesMultiples")}>
-              Raíces Múltiples
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("reglaFalsa")}>
-              Regla Falsa
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("secante")}>
-              Secante
-            </button>
-          </div>
-      
-          <h2 className="sectionTitle">Sistemas de ecuaciones</h2>
-          <div className="grid">
-            <button className="homeButton" onClick={() => handleOpenModal("Cholesky")}>
-              Cholesky
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("Crout")}>
-              Crout
-            </button>
-            <button className="homeButton" onClick={() => handleOpenModal("Doolittle")}>
-              Doolittle
-            </button>
-          </div>
-      
-          <h2 className="sectionTitle">Interpolación</h2>
-          <div className="grid">
-            {/* Agrega aquí los botones correspondientes a los métodos de interpolación */}
-          </div>
-      
-          <Modal
-            isOpen={modalIsOpen}
-            onRequestClose={handleCloseModal}
-            className="modal"
-            overlayClassName="overlay"
-          >
-            {selectedMethod()}
-            <button onClick={handleCloseModal}>Cerrar</button>
-          </Modal>
-        </div>
-      );
-      
+  return (
+    <div className="home-page">
+      <h1>Metodos Numericos</h1>
+
+      <h2 className="sectionTitle">Ecuaciones de una variable</h2>
+      <div className="grid">
+        <button className="homeButton" onClick={() => handleOpenModal("biseccion")}>
+          Bisección
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("busquedasinc")}>
+          Búsquedas Incrementales
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Newton")}>
+          Newton
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("puntoFijo")}>
+          Punto Fijo
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("RaicesMultiples")}>
+          Raíces Múltiples
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("reglaFalsa")}>
+          Regla Falsa
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("secante")}>
+          Secante
+        </button>
+      </div>
+
+      <h2 className="sectionTitle">Sistemas de ecuaciones</h2>
+      <div className="grid">
+        <button className="homeButton" onClick={() => handleOpenModal("Cholesky")}>
+          Cholesky
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Crout")}>
+          Crout
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Doolittle")}>
+          Doolittle
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("GausSimple")}>
+          Gauss Sencilla
+        </button>
+      </div>
+
+      <h2 className="sectionTitle">Interpolación</h2>
+      <div className="grid">
+        {/* Agrega aquí los botones correspondientes a los métodos de interpolación */}
+      </div>
+
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={handleCloseModal}
+        className="modal"
+        overlayClassName="overlay"
+      >
+        {selectedMethod()}
+        <button onClick={handleCloseModal}>Cerrar</button>
+      </Modal>
+    </div>
+  );
+
 };
 
 export default HomePage;
