@@ -14,7 +14,7 @@ from metodos.Crout import crout
 from metodos.Doolittle import doolittle
 from metodos.Cholesky import cholesky
 from metodos.GausPar import GausPar
-from metodos.GausSimple import GausSimpe
+from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
 
