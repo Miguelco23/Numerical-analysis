@@ -55,6 +55,13 @@ class RaciesMultiples(BaseModel):
     x0:float
     tol:float
     nmax:int
+ 
+class Jacobi(BaseModel):
+    A: list[list]
+    b: list[int]
+    x0:float
+    tol:float
+    nmax:float
         
 @app.get('/')
 def main():
@@ -68,6 +75,13 @@ def solvePuntoFijo(input: PuntoFijoModel):
 def SolveBusquedaInc(input: BusquedaIncModel):
     return({"Result":busqueda_inc(input.f, input.x0, input.h,input.nmax)})
 
+@app.post('/api/newton')
+def solveNewton(input: NewtonModel):
+    return({"Result":Newton(input.f, input.derf, input.x0,input.tol,input.nmax)})
+
+@app.post('/api/raicesmultiples')
+def solveRaicesMultiples(input: RaicesMultiplesModel):
+    return({"Result":RaicesMultiples(input.f, input.derf, input.doblederf, input.x0,input.tol,input.nmax)})
 
 @app.post('/api/crout')
 def solveCrout(input: MatrixSystemModel):
@@ -77,6 +91,18 @@ def solveCrout(input: MatrixSystemModel):
 def solveDoolittle(input: MatrixSystemModel):
     return({"Result":doolittle(input.A, input.b)})
 
+@app.post('/api/GausPar')
+def solveGausPar(input: MatrixSystemModel):
+    return({"Result":GausPar(input.A, input.b)})
+
+@app.post('/api/GausSimple')
+def solveGausSimple(input: MatrixSystemModel):
+    return({"Result":GausSimple(input.A, input.b)})
+
+@app.post('/api/LUSimple')
+def solveLUSImple(input: MatrixSystemModel):
+    return({"Result":LUSimple(input.A, input.b)})
+
 @app.post('/api/cholesky')
 def solveCholesky(input: MatrixSystemModel):
     try:
@@ -85,10 +111,6 @@ def solveCholesky(input: MatrixSystemModel):
         raise HTTPException(status_code=400, detail="revisar la matriz de entrada") 
     return result
 
-@app.post('/api/newton')
-def solveNewton(input: NewtonModel):
-    return({"Result":Newton(input.f, input.derf, input.x0,input.tol,input.nmax)})
-
-@app.post('/api/raicesmultiples')
-def solveRaicesMultiples(input: RaicesMultiplesModel):
-    return({"Result":RaicesMultiples(input.f, input.derf, input.doblederf, input.x0,input.tol,input.nmax)})
+@app.post('/api/Jacobi')
+def solveJacobi(input: JacobiModel):
+    return({"Result":crout(input.A, input.b, input.x0, input.tol, input.nmax)})
