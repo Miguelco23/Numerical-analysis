@@ -4,14 +4,6 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const Secante = () => {
-    return (
-        <div id="Secante">
-            <h2>Secante</h2>
-        </div>
-    );
-}
-
 const HomePage = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [selectedButton, setSelectedButton] = useState(null);
@@ -47,7 +39,7 @@ const HomePage = () => {
             case "reglaFalsa":
                 return <Methods.ReglaFalsa />;
             case "secante":
-                return <Secante />;
+                return <Methods.Secante />;
             default:
                 return null;
         }

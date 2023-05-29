@@ -7,3 +7,4 @@ export { default as RaicesMultiples } from './RaicesMultiples';
 export { default as BusquedasInc } from './BusquedasInc';
 export { default as ReglaFalsa } from './ReglaFalsa';
 export { default as PuntoFijo } from './PuntoFijo';
+export { default as Secante } from './Secante';
