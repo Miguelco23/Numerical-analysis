@@ -10,3 +10,4 @@ export { default as PuntoFijo } from './PuntoFijo';
 export { default as Secante } from './Secante';
 export { default as GaussSencilla } from './GaussSencilla';
 export { default as GaussParcial } from './GaussParcial';
+export { default as LuGaussiana } from './LuGaussiana';

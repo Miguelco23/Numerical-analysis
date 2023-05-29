@@ -44,6 +44,8 @@ const HomePage = () => {
         return <Methods.GaussSencilla />;
       case "GausPar":
         return <Methods.GaussParcial />;
+      case "LUSimple":
+        return <Methods.LuGaussiana />;
       default:
         return null;
     }
@@ -94,6 +96,9 @@ const HomePage = () => {
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("GausPar")}>
           Eliminacion Gaussiana con pivoteo parcial
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("LUSimple")}>
+          Factorizacion LU con eliminacion Gaussiana
         </button>
       </div>
 
