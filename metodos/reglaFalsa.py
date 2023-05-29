@@ -1,35 +1,34 @@
-def regla_falsa(f, a, b, tol, max_iter=100):
-
-    fa = f(a)
-    fb = f(b)
+def regla_falsa(f, a, b, tol, max_iter):
     i = 0
-    while abs(b-a) > tol and i < max_iter:
-        try:
-            c = (a*fb - b*fa)/(fb - fa)
-            fc = f(c)
-            if fa*fc < 0:
+    try:
+        fa = eval(f.replace('x', 'a'))
+        fb = eval(f.replace('x', 'b'))
+        while abs(b - a) > tol and i < max_iter:
+            c = (a * fb - b * fa) / (fb - fa)
+            fc = eval(f.replace('x', 'c'))
+            if fa * fc < 0:
                 b = c
                 fb = fc
             else:
                 a = c
                 fa = fc
             i += 1
-        except ZeroDivisionError:
-            print("Error: División por cero.")
+        if abs(b - a) > tol:
+            print("El método no converge después de %d iteraciones." % max_iter)
             return None
-    if abs(b-a) > tol:
-        print("El método no converge después de %d iteraciones." % max_iter)
+        return "La raiz de la funcion es: " + str(c)
+    except ZeroDivisionError:
+        print("Error: División por cero.")
         return None
-    return c
 
-# F(x)
-def f(x):
-    return x**2 - 2
 
-# intervalo y toleracia
-a = 1
-b = 2
-tol = 1e-6
 
-# raiz = regla_falsa(f, a, b, tol)
-# print("La raíz de la función es:", raiz)
+# # intervalo y toleracia
+# f = "x**2 -2"
+# a = 1
+# b = 2
+# tol = 1e-6
+# max_iter = 100
+
+# raiz = regla_falsa(f, a, b, tol, max_iter)
+# print(raiz)
