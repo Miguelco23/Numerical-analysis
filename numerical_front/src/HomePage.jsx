@@ -12,14 +12,6 @@ const BusquedasInc = () => {
     );
 }
 
-const Newton = () => {
-    return (
-        <div id="Newton">
-            <h2>Newton</h2>
-        </div>
-    );
-}
-
 const PuntoFijo = () => {
     return (
         <div id="PuntoFijo">
@@ -79,7 +71,7 @@ const HomePage = () => {
             case "Doolittle":
                 return <Methods.Doolittle />;
             case "Newton":
-                return <Newton />;
+                return <Methods.Newton />;
             case "puntoFijo":
                 return <PuntoFijo />;
             case "RaicesMultiples":
