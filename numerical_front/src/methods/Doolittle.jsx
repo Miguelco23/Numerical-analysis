@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Crout = () => {
+const Doolittle = () => {
   const [matrixSize, setMatrixSize] = useState(0);
   const [matrixData, setMatrixData] = useState([]);
   const [zData, setZData] = useState([]);
@@ -72,7 +72,7 @@ const Crout = () => {
 
   return (
     <div>
-      <h2>Método de Crout</h2>
+      <h2>Método de Doolittle</h2>
       <div>
         <label>Orden de la matriz:</label>
         <input type="number" min="1" onChange={handleMatrixSizeChange} />
@@ -96,4 +96,4 @@ const Crout = () => {
   );
 };
 
-export default Crout;
+export default Doolittle;

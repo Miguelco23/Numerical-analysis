@@ -8,11 +8,11 @@ const Cholesky = () => {
 
   const handleMatrixSizeChange = (event) => {
     let size = parseInt(event.target.value);
-    if (event.target.value === ""){
+    if (event.target.value === "") {
       size = 0;
     }
     setMatrixSize(size);
-    setMatrixData(Array(size).fill(Array(size).fill(0)));
+    setMatrixData(Array.from({ length: size }, () => Array(size).fill(0)));
     setZData(Array(size).fill(0));
     setResult(null);
   };
@@ -36,26 +36,12 @@ const Cholesky = () => {
   };
 
   const handleSubmit = async () => {
-    const requestBody = {
+    const data = {
       matrix: matrixData,
       z: zData,
     };
 
-    // Realizar la llamada a la API fetch para enviar los datos
-    try {
-      const response = await fetch("URL_DE_TU_API", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
-
-      const data = await response.json();
-      setResult(data.result);
-    } catch (error) {
-      console.error("Error al realizar la llamada a la API:", error);
-    }
+    console.log(data);
   };
 
   const renderMatrixInputs = () => {
@@ -63,7 +49,7 @@ const Cholesky = () => {
       <div key={rowIndex}>
         {row.map((cell, colIndex) => (
           <input
-            style={{width: "30px"}}
+            style={{ width: "30px" }}
             key={colIndex}
             type="number"
             onChange={(e) => handleMatrixInputChange(e, rowIndex, colIndex)}
@@ -76,7 +62,7 @@ const Cholesky = () => {
   const renderZInputs = () => {
     return zData.map((value, index) => (
       <input
-        style={{width: "30px"}}
+        style={{ width: "30px" }}
         key={index}
         type="number"
         onChange={(e) => handleZInputChange(e, index)}
@@ -89,11 +75,7 @@ const Cholesky = () => {
       <h2>Método de Cholesky</h2>
       <div>
         <label>Orden de la matriz:</label>
-        <input
-          type="number"
-          min="1"
-          onChange={handleMatrixSizeChange}
-        />
+        <input type="number" min="1" onChange={handleMatrixSizeChange} />
       </div>
       <div>
         <label>Matriz:</label>
@@ -115,5 +97,3 @@ const Cholesky = () => {
 };
 
 export default Cholesky;
-
-
