@@ -48,7 +48,7 @@ class NewtonModel(BaseModel):
     tol:float
     nmax:int
     
-class RaciesMultiples(BaseModel):
+class RaicesMultiples(BaseModel):
     f:str
     derf:str
     doblederf:str
