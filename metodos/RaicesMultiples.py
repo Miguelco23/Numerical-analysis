@@ -1,25 +1,24 @@
-from math import*
-import numpy as np
 
-def Raices_Multiples(f, derf, doblederf, x0, tol, Nmax):
+def RaicesMultiples(f, df, d2f, x0, tol, Nmax):
+    # Inicialización
     xant = x0
-    flambda = lambda x: eval(f)
-    fant = flambda(xant)
+    fant = f(xant)
     E = 1000
     cont = 0
-    derflambda = lambda x: eval(derf)
-    dobderflambda = lambda x: eval(derf)
+    
+    # Ciclo
     while E > tol and cont < Nmax:
-      xact = xant-fant*derflambda(xant)/((derflambda(xant))**2-fant*dobderflambda(xant))
-      fact = flambda(xact)
-      E = abs(xact-xant)
-      cont = cont+1
-      xant = xact
-      fant = fact
-      if E < tol:
-        x = xact
-        ite = cont
-        err = E
-        return "La función tiene raíz multiple en, ",  x, "con una tolerancia de, ", E, "y un número de iteraciones de ", ite
-      else:
-        return "No tiene solucion"
+        xact = xant - (fant * df(xant)) / ((df(xant)) ** 2 - fant * d2f(xant))
+        fact = f(xact)
+        E = abs(xact - xant)
+        cont = cont + 1
+        xant = xact
+        fant = fact
+    
+    # Entrega de resultados
+    x = xact
+    iter = cont
+    err = E
+    
+    return x, iter, err
+
