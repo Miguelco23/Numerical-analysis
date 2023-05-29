@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const Crout = () => {
-  const [matrixSize, setMatrixSize] = useState(0);
   const [matrixData, setMatrixData] = useState([]);
   const [zData, setZData] = useState([]);
   const [result, setResult] = useState(null);
@@ -11,7 +10,6 @@ const Crout = () => {
     if (event.target.value === "") {
       size = 0;
     }
-    setMatrixSize(size);
     setMatrixData(Array.from({ length: size }, () => Array(size).fill(0)));
     setZData(Array(size).fill(0));
     setResult(null);
