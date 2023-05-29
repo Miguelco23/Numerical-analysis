@@ -48,6 +48,14 @@ class NewtonModel(BaseModel):
     tol:float
     nmax:int
     
+class RaciesMultiples(BaseModel):
+    f:str
+    derf:str
+    doblederf:str
+    x0:float
+    tol:float
+    nmax:int
+        
 @app.get('/')
 def main():
     return "Hola que mas?"
@@ -80,3 +88,7 @@ def solveCholesky(input: MatrixSystemModel):
 @app.post('/api/newton')
 def solveNewton(input: NewtonModel):
     return({"Result":Newton(input.f, input.derf, input.x0,input.tol,input.nmax)})
+
+@app.post('/api/raicesmultiples')
+def solveRaicesMultiples(input: RaicesMultiplesModel):
+    return({"Result":RaicesMultiples(input.f, input.derf, input.doblederf, input.x0,input.tol,input.nmax)})
