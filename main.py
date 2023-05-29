@@ -7,14 +7,14 @@ from metodos.biseccion import biseccion
 from metodos.busquedasinc import busqueda_inc
 from metodos.Newton import Newton
 from metodos.puntoFijo import puntoFijo
-from metodos.RaicesMultiples import Raices_Multiples
+from metodos.RaicesMultiples import RaicesMultiples
 from metodos.reglaFalsa import regla_falsa
 from metodos.secante import secante
 from metodos.Crout import crout
 from metodos.Doolittle import doolittle
 from metodos.Cholesky import cholesky
 from metodos.GausPar import GausPar
-from metodos.GausSimple import GausSimpe
+from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
 
@@ -48,7 +48,7 @@ class NewtonModel(BaseModel):
     tol:float
     nmax:int
     
-class RaciesMultiples(BaseModel):
+class RaicesMultiplesModel(BaseModel):
     f:str
     derf:str
     doblederf:str
@@ -56,7 +56,7 @@ class RaciesMultiples(BaseModel):
     tol:float
     nmax:int
  
-class Jacobi(BaseModel):
+class JacobiModel(BaseModel):
     A: list[list]
     b: list[int]
     x0:float
