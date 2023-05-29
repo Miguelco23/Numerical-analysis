@@ -4,14 +4,6 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const PuntoFijo = () => {
-    return (
-        <div id="PuntoFijo">
-            <h2>Punto Fijo</h2>
-        </div>
-    );
-}
-
 const Secante = () => {
     return (
         <div id="Secante">
@@ -49,7 +41,7 @@ const HomePage = () => {
             case "Newton":
                 return <Methods.Newton />;
             case "puntoFijo":
-                return <PuntoFijo />;
+                return <Methods.PuntoFijo />;
             case "RaicesMultiples":
                 return <Methods.RaicesMultiples />;
             case "reglaFalsa":
