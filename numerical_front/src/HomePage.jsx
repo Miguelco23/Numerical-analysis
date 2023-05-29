@@ -46,6 +46,8 @@ const HomePage = () => {
         return <Methods.GaussParcial />;
       case "LUSimple":
         return <Methods.LuGaussiana />;
+      case "Jacobi":
+        return <Methods.Jacobi />;
       default:
         return null;
     }
@@ -99,6 +101,9 @@ const HomePage = () => {
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("LUSimple")}>
           Factorizacion LU con eliminacion Gaussiana
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Jacobi")}>
+          Jacobi
         </button>
       </div>
 
