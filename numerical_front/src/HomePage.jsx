@@ -4,14 +4,6 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
 
-const BusquedasInc = () => {
-    return (
-        <div id="BusquedasInc">
-            <h2>Busquedas Incremenatales</h2>
-        </div>
-    );
-}
-
 const PuntoFijo = () => {
     return (
         <div id="PuntoFijo">
@@ -55,7 +47,7 @@ const HomePage = () => {
             case "biseccion":
                 return <Methods.Biseccion />;
             case "busquedasinc":
-                return <BusquedasInc />;
+                return <Methods.BusquedasInc />;
             case "Cholesky":
                 return <Methods.Cholesky />;
             case "Crout":
@@ -79,7 +71,7 @@ const HomePage = () => {
 
     return (
         <div className="home-page">
-          <h1>Numerical Analysis</h1>
+          <h1>Metodos Numericos</h1>
       
           <h2 className="sectionTitle">Ecuaciones de una variable</h2>
           <div className="grid">
