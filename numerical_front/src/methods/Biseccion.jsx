@@ -10,27 +10,33 @@ const Biseccion = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = {
-      a: parseFloat(a),
-      b: parseFloat(b),
-      func,
-      tolerance: parseFloat(tolerance),
-    };
+    if (a === "" || b === "" || func === "" || tolerance === "") {
+      alert("Rellena todos los campos");
+    } else {
+      const data = {
+        a: parseFloat(a),
+        b: parseFloat(b),
+        func,
+        tolerance: parseFloat(tolerance),
+      };
 
-    try {
-      const response = await fetch('API_URL', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      console.log(data);
 
-      const resultData = await response.json();
-      setResult(resultData.result);
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Error:', error);
+      // try {
+      //   const response = await fetch('API_URL', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify(data),
+      //   });
+
+      //   const resultData = await response.json();
+      //   setResult(resultData.result);
+      // } catch (error) {
+      //   console.error('Error:', error);
+      //   alert('Error:', error);
+      // }
     }
   };
 
