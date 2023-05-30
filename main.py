@@ -19,6 +19,7 @@ from metodos.GausSeidel import GausSeidel
 from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
+from metodos.Vandermonde import vandermonde
 
 
 
@@ -30,6 +31,11 @@ app = FastAPI()
 class MatrixSystemModel(BaseModel):
     A: list[list]
     b: list[int]
+
+class InterpolationModel(BaseModel):
+    x: list
+    y:list
+    degree:int
 
 class PuntoFijoModel(BaseModel):
     f:str
@@ -125,3 +131,6 @@ def solveJacobi(input: JacobiandSeidelModel):
 def solveGausSeidel(input: JacobiandSeidelModel):
     return({"Result":GausSediel(input.A, input.b, input.x0, input.tol, input.nmax)})
 
+@app.post('/api/vandermonde')
+def solveDoolittle(input: InterpolationModel):
+    return({"Result":vandermonde(input.x, input.y,input.degree)})
