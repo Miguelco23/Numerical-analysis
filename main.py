@@ -15,6 +15,7 @@ from metodos.Doolittle import doolittle
 from metodos.Cholesky import cholesky
 from metodos.GausPar import GausPar
 from metodos.GausTotal import GausTotal
+from metodos.GausSeidel import GausSeidel
 from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
@@ -57,7 +58,7 @@ class RaicesMultiplesModel(BaseModel):
     tol:float
     nmax:int
  
-class JacobiandSedielModel(BaseModel):
+class JacobiandSeidelModel(BaseModel):
     A: list[list]
     b: list[int]
     x0:float
@@ -117,10 +118,10 @@ def solveCholesky(input: MatrixSystemModel):
     return result
 
 @app.post('/api/Jacobi')
-def solveJacobi(input: JacobiandSedielModel):
+def solveJacobi(input: JacobiandSeidelModel):
     return({"Result":Jacobi(input.A, input.b, input.x0, input.tol, input.nmax)})
 
-@app.post('/api/GausSediel')
-def solveGausSediel(input: JacobiandSedielModel):
+@app.post('/api/GausSeidel')
+def solveGausSeidel(input: JacobiandSeidelModel):
     return({"Result":GausSediel(input.A, input.b, input.x0, input.tol, input.nmax)})
 
