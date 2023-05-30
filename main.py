@@ -14,6 +14,7 @@ from metodos.Crout import crout
 from metodos.Doolittle import doolittle
 from metodos.Cholesky import cholesky
 from metodos.GausPar import GausPar
+from metodos.GausTotal import GausTotal
 from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
@@ -56,7 +57,7 @@ class RaicesMultiplesModel(BaseModel):
     tol:float
     nmax:int
  
-class JacobiModel(BaseModel):
+class JacobiandSedielModel(BaseModel):
     A: list[list]
     b: list[int]
     x0:float
@@ -99,6 +100,10 @@ def solveGausPar(input: MatrixSystemModel):
 def solveGausSimple(input: MatrixSystemModel):
     return({"Result":GausSimple(input.A, input.b)})
 
+@app.post('/api/GausTotal')
+def solveGausTotal(input: MatrixSystemModel):
+    return({"Result":GausTotal(input.A, input.b)})
+
 @app.post('/api/LUSimple')
 def solveLUSImple(input: MatrixSystemModel):
     return({"Result":LUSimple(input.A, input.b)})
@@ -112,5 +117,10 @@ def solveCholesky(input: MatrixSystemModel):
     return result
 
 @app.post('/api/Jacobi')
-def solveJacobi(input: JacobiModel):
+def solveJacobi(input: JacobiandSedielModel):
     return({"Result":Jacobi(input.A, input.b, input.x0, input.tol, input.nmax)})
+
+@app.post('/api/GausSediel')
+def solveGausSediel(input: JacobiandSedielModel):
+    return({"Result":GausSediel(input.A, input.b, input.x0, input.tol, input.nmax)})
+
