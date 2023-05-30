@@ -1,6 +1,6 @@
 import numpy as np
 
-def GausSediel(A, b, x0, tol, Nmax):
+def GausSeidel(A, b, x0, tol, Nmax):
     # Inicialización
     D = np.diag(np.diag(A))
     L = -np.tril(A) + D
