@@ -1,6 +1,6 @@
 import numpy as np
 
-def C10_gausstot(A, b):
+def GausTotal(A, b):
     # Inicialización
     n = A.shape[0]
     M = np.concatenate((A, b), axis=1)
