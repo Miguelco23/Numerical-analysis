@@ -26,4 +26,4 @@ def GausSeidel(A_, b_, x0_, tol, Nmax):
     iterations = cont
     err = E
 
-    return x, iterations, err
+    return ({"x":x,"iterations":iter,"Error":err})
