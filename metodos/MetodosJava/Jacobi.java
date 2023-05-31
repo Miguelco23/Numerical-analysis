@@ -57,4 +57,3 @@ public class Jacobi {
         return Math.sqrt(sum);
     }
 }
-
