@@ -48,14 +48,35 @@ const Jacobi = () => {
 
     const handleSubmit = async () => {
         const data = {
-            matrix: matrixData,
-            z: zData,
+            A: matrixData,
+            b: zData,
             x0: x0,
-            tolerance: parseFloat(tolerance),
-            nMax: parseFloat(nMax)
+            tol: parseFloat(tolerance),
+            nmax: parseFloat(nMax)
         };
 
         console.log(data);
+
+        try { 
+            const response = await fetch('http://127.0.0.1:8000/api/Jacobi', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+          
+            if (!response.ok) {
+              throw new Error('Error al realizar la petición');
+            }
+          
+            const resultData = await response.json();
+            setResult(`X: ${resultData.Result.x} - Iterations: ${resultData.Result.iterations} - Error: ${resultData.Result.Error}`);
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Error:', error);
+          }
+
     };
 
     const renderMatrixInputs = () => {
