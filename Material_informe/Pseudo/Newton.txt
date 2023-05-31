@@ -1,0 +1,26 @@
+Función Newton(f, derf, x0, tol, Nmax)
+    xant = x0
+    flambda = lambda x: eval(f)
+    fant = flambda(xant)
+    E = 1000
+    cont = 0
+    derflambda = lambda x: eval(derf)
+
+    Mientras E > tol y cont < Nmax hacer
+        xact = xant - fant / derflambda(xant)
+        fact = flambda(xact)
+        E = abs(xact - xant)
+        cont = cont + 1
+        xant = xact
+        fant = fact
+        
+        Si E < tol entonces
+            x = xact
+            ite = cont
+            err = E
+            Devolver ("La función tiene una raíz en", x)
+        Fin Si
+    Fin Mientras
+    
+    Devolver ("No tiene solución")
+Fin Función
