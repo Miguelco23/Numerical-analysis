@@ -1,0 +1,14 @@
+input: f,x0,h,nmax
+
+xant = x0
+fant = f(xant)
+xact = xant+h
+fact = f(xact)
+
+itera hasta nmax:
+    si fant * fact <0:
+        termine, raiz entre xant y xact
+    xant = xact
+    xact= xant+h
+    fant = f(ant)
+    fact = f(act)
