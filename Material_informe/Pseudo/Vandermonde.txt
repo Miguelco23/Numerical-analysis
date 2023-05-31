@@ -1,0 +1,17 @@
+entradas: x, y, grado
+
+verificar que x y y sean de la misma longitud
+
+vander_matrix se inicializa como una lista vacia
+
+for i= 0 hasta n:
+    row se inicializa como una lista vacia
+    for j=0 hasta degree+1:
+        agregar a row x[i]**j
+    agregar row a vander_matrix
+
+#tenemos ahora la matriz de vandermonde, a resolver el sistema para los coeficientes con algun metodo
+
+coefficients = resolver_sistema_lineal(vander_matrix, y)
+
+retorna coefficients

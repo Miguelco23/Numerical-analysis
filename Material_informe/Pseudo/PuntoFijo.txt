@@ -1,0 +1,13 @@
+entradas: f, g, x0, tol, nmax
+
+se inicializa error como un numero muy grande
+iter = 0
+
+mientras que el error sea mayor a la tol y iter menor a nmax:
+
+    xact = g(xant)
+    err = abs(xant-xact)
+    iter+=1
+    xant = xact
+
+retornar xact, iter, err
