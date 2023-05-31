@@ -14,11 +14,11 @@ def regla_falsa(f, a, b, tol, max_iter):
                 fa = fc
             i += 1
         if abs(b - a) > tol:
-            print("El método no converge después de %d iteraciones." % max_iter)
+            print("The method does not converge after %d iterations." % max_iter)
             return None
-        return "La raiz de la funcion es: " + str(c)
+        return "The root of the function is:" + str(c)
     except ZeroDivisionError:
-        print("Error: División por cero.")
+        print("Error: Division by zero.")
         return None
 
 
