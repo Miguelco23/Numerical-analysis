@@ -1,0 +1,19 @@
+Input: A, b
+n = tamaño de A
+Inicializar L,U Como matrizes de orden nxn
+
+for j = 0 hasta n:
+    Definir la diagonal de U en unos
+
+    for i = 0 hasta j+1:
+        calcular el producto punto de una columan de U con una fila de U, despejar al elemento de A correspondiente
+
+    for i = j hasta n:
+     
+        calcular el producto punto de una columan de U con una fila de L, despejar al elemento de A correspondiente
+
+hacer sub progresiva con Lz=b
+
+hacer sub regresiva con Ux=z
+
+retornar x

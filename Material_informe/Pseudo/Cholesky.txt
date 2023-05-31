@@ -1,0 +1,17 @@
+Input: A, b
+n = tamaño de A
+Inicializar L, como Matriz de orden nxn
+
+for j = 0 hasta n:
+    for i = 0 hasta j+1:
+        si el elemento es la diagonal, se calcula usando raiz cuadrada con la diagonal relacioanda en A
+
+    for i = j hasta n:
+     
+        calcular el producto punto de una columan de U con una fila de L, despejar al elemento de A correspondiente
+
+hacer sub progresiva con Lz=b
+
+hacer sub regresiva con L^T*x=z
+
+retornar x

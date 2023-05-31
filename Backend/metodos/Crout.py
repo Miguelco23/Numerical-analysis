@@ -9,7 +9,7 @@ def crout(A, b):
     x = np.zeros(n)
 
     for j in range(n):
-        L[j][j] = 1.0
+        U[j][j] = 1.0
 
         for i in range(j+1):
             sum_1 = sum(L[i][k] * U[k][j] for k in range(i))
