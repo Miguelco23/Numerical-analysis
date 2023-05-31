@@ -48,6 +48,8 @@ const HomePage = () => {
         return <Methods.GaussTotal />;
       case "LUSimple":
         return <Methods.LuGaussiana />;
+      case "GausSeidel":
+        return <Methods.GaussSeidel />;
       case "Jacobi":
         return <Methods.Jacobi />;
       default:
@@ -106,6 +108,9 @@ const HomePage = () => {
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("LUSimple")}>
           Factorizacion LU con eliminacion Gaussiana
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("GausSeidel")}>
+          Gauss-Seidel
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("Jacobi")}>
           Jacobi
