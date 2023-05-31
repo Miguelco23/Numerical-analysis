@@ -90,7 +90,7 @@ const HomePage = () => {
         </button>
       </div>
 
-      <h2 className="sectionTitle">Ecuation systems</h2>
+      <h2 className="sectionTitle">Equation systems</h2>
       <div className="grid">
         <button className="homeButton" onClick={() => handleOpenModal("Cholesky")}>
           Cholesky

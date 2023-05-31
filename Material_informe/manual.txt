@@ -1,0 +1,29 @@
+User Manual
+SetUp
+    clone the repository un your PC = git clone https://github.com/Miguelco23/Numerical-analysis
+For Backend
+    Install Python = https://www.python.org/downloads/
+    Create a virtual enviroment (Optional)
+        enter to Backend foler = cd proyect_folder/Backend
+        Create the virtual enviroment = python -m venv env_name
+        Activate the virtual enviroment = source env_name/Scripts/activate
+    Install the dependences
+        Numpy = pip install numpy
+        FastAPI = pip install fastapi
+        Uvicorn = pip install uvicorn
+    Run API = uvicorn main:app --reload
+For frontend (In a new terminal)
+    Install Node.js = https://nodejs.org
+    Enter to frontend foler = cd proyect_folder/Frontend
+    Run the React server = npm start
+
+App Use
+In your favorite web browser go to http://localhost:3000/
+In the home page you'll see the methods divided in three categories:
+One Variable equations, equation systems and Interpolation.
+Each of these contains from 2 to 9 buttons with some method name
+If you want to use any method, you just have to click the button with it's name.
+Once you click the button, will open a modal form with the parammeters necesary for each method
+You'll have to fill all the parammeters to get a correct answer
+With all the inputs filled you just have to click the "calculate" button to get a response.
+And finally when you want to change the method or just go back to the homepage. You just have to click the "close" button. Or just click out of the modal
