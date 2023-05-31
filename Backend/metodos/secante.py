@@ -10,11 +10,11 @@ def secante(f, x0, x1, tol, max_iter):
             x1 = x1 - fx1 * dx
             fx1 = eval(f.replace('x', str(x1)))
             if abs(fx1) <= tol:
-                return("La raíz de la función es: "+ str(x1))
+                return("The root of the function is: "+ str(x1))
             i += 1
         except ZeroDivisionError:
-            return("Error: División por cero.")
-    return("El método no converge después de %d iteraciones." % max_iter)
+            return("Error: Division by zero.")
+    return("The method does not converge after %d iterations." % max_iter)
 
 
 # intervalo y toleracia

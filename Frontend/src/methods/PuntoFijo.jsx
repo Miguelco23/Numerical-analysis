@@ -6,7 +6,7 @@ const PuntoFijo = () => {
     const [func, setFunc] = useState('');
     const [tolerance, setTolerance] = useState('');
     const [nMax, setNMax] = useState('');
-    const [result, setResult] = useState('');
+    const [result, setResult] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -16,29 +16,34 @@ const PuntoFijo = () => {
         } else {
             const data = {
                 x0: parseFloat(x0),
-                gx,
-                func,
-                tolerance: parseFloat(tolerance),
-                nMax: parseFloat(nMax)
+                g: gx,
+                f: func,
+                tol: parseFloat(tolerance),
+                nmax: parseFloat(nMax)
             };
+            console.log(JSON.stringify(data));
 
-            console.log(data);
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/puntofijo', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            // try {
-            //   const response = await fetch('API_URL', {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   });
+                if (!response.ok) {
+                    throw new Error('Error al realizar la petición');
+                }
 
-            //   const resultData = await response.json();
-            //   setResult(resultData.result);
-            // } catch (error) {
-            //   console.error('Error:', error);
-            //   alert('Error:', error);
-            // }
+                const resultData = await response.json();
+                setResult(`X: ${resultData.Result.x} - Iterations: ${resultData.Result.iters} - Error: ${resultData.Result.Error}`);
+                console.log(result);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error:', error);
+            }
+
         }
     };
 

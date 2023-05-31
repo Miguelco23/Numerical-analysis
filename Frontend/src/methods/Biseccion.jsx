@@ -16,27 +16,32 @@ const Biseccion = () => {
       const data = {
         a: parseFloat(a),
         b: parseFloat(b),
-        func,
-        tolerance: parseFloat(tolerance),
+        f: func,
+        tol: parseFloat(tolerance),
       };
 
-      console.log(data);
+      console.log(JSON.stringify(data));
 
-      // try {
-      //   const response = await fetch('API_URL', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify(data),
-      //   });
+      try { 
+        const response = await fetch('http://127.0.0.1:8000/api/biseccion', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+      
+        if (!response.ok) {
+          throw new Error('Error al realizar la petición');
+        }
+      
+        const resultData = await response.json();
+        setResult(resultData.Result);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error:', error);
+      }
 
-      //   const resultData = await response.json();
-      //   setResult(resultData.result);
-      // } catch (error) {
-      //   console.error('Error:', error);
-      //   alert('Error:', error);
-      // }
     }
   };
 

@@ -35,11 +35,31 @@ const LuGaussiana = () => {
 
   const handleSubmit = async () => {
     const data = {
-      matrix: matrixData,
-      z: zData,
+      A: matrixData,
+      b: zData,
     };
-
     console.log(data);
+
+    try { 
+      const response = await fetch('http://127.0.0.1:8000/api/LUSimple', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+    
+      if (!response.ok) {
+        throw new Error('Error al realizar la petición');
+      }
+    
+      const resultData = await response.json();
+      setResult(`X: ${resultData.Result.x} - L: ${resultData.Result.L} - U: ${resultData.Result.U}`);
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error:', error);
+    }
+
   };
 
   const renderMatrixInputs = () => {

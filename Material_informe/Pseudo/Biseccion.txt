@@ -1,0 +1,33 @@
+Función biseccion(f, a, b, tol)
+    # Evaluar la cadena de texto como una función
+    Función evaluar_funcion(x)
+        Devolver eval(f)
+    Fin Función
+
+    Si evaluar_funcion(a) * evaluar_funcion(b) >= 0 entonces
+        Imprimir "Error: La función no cambia de signo en el intervalo dado."
+        Devolver Nulo
+    Sino
+        c = (a + b) / 2
+        Mientras abs(evaluar_funcion(c)) > tol hacer
+            Si evaluar_funcion(a) * evaluar_funcion(c) < 0 entonces
+                b = c
+            Sino
+                a = c
+            Fin Si
+            c = (a + b) / 2
+        Fin Mientras
+        Devolver c
+    Fin Si
+Fin Función
+
+# Cadena de texto que representa la función
+f = "x**2 - 2"
+
+# Intervalo y tolerancia
+a = 0
+b = 2
+tol = 1e-6
+
+raiz = biseccion(f, a, b, tol)
+Imprimir "La raíz de la función es:", raiz

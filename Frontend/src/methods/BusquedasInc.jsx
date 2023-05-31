@@ -14,29 +14,34 @@ const BusquedasInc = () => {
             alert("Rellena todos los campos");
         } else {
             const data = {
-                func,
+                f: func,
                 x0: parseFloat(x0),
                 h: parseFloat(h),
-                nMax: parseFloat(nMax),
+                nmax: parseFloat(nMax),
             };
 
             console.log(data);
 
-            // try {
-            //   const response = await fetch('API_URL', {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   });
-
-            //   const resultData = await response.json();
-            //   setResult(resultData.result);
-            // } catch (error) {
-            //   console.error('Error:', error);
-            //   alert('Error:', error);
-            // }
+            try { 
+                const response = await fetch('http://127.0.0.1:8000/api/busquedainc', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data),
+                });
+              
+                if (!response.ok) {
+                  throw new Error('Error al realizar la petición');
+                }
+              
+                const resultData = await response.json();
+                setResult(resultData.Result);
+              } catch (error) {
+                console.error('Error:', error);
+                alert('Error:', error);
+              }
+    
         }
     };
 
