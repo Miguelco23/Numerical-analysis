@@ -22,7 +22,7 @@ from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
 from metodos.Vandermonde import vandermonde
-
+from metodos.biseccion import biseccion
 
 
 app = FastAPI()
@@ -91,11 +91,36 @@ class SplineModel(BaseModel):
     x:list[float]
     y:list[float]
     
+class IterativeModel(BaseModel):
+    f:str
+    a:float | None = None
+    b:float | None = None
+    tol:float
+    x0:float | None = None
+    x1:float | None = None
+    max_iter:int | None = None
+
+    
 
 
 @app.get('/')
 def main():
     return "Hola que mas?"
+
+
+
+@app.post('/api/biseccion')
+def solvePuntoFijo(input: IterativeModel):
+    return({"Result":biseccion(input.f, input.a, input.b,input.tol)})
+
+@app.post('/api/reglafalsa')
+def solvePuntoFijo(input: IterativeModel):
+    return({"Result":regla_falsa(input.f, input.a, input.b,input.tol,input.max_iter)})
+
+
+@app.post('/api/secante')
+def solvePuntoFijo(input: IterativeModel):
+    return({"Result":secante(input.f, input.x0,input.x1,input.tol, input.max_iter)})
 
 @app.post('/api/puntofijo')
 def solvePuntoFijo(input: PuntoFijoModel):
@@ -129,7 +154,7 @@ def solveGausPar(input: MatrixSystemModel):
 def solveGausSimple(input: MatrixSystemModel):
     return({"Result":GausSimple(input.A, input.b)})
 
-@app.post('/api/GausTotal')
+@app.post('/api/GausTotal') #   NO SIRVE
 def solveGausTotal(input: MatrixSystemModel):
     return({"Result":GausTotal(input.A, input.b)})
 

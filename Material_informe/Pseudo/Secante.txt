@@ -1,0 +1,29 @@
+Función secante(f, x0, x1, tol, max_iter)
+    i = 0
+    Mientras i < max_iter hacer
+        Intentar
+            fx0 = eval(f.replace('x', str(x0)))
+            fx1 = eval(f.replace('x', str(x1)))
+            dx = (x1 - x0) / (fx1 - fx0)
+            x0 = x1
+            fx0 = fx1
+            x1 = x1 - fx1 * dx
+            fx1 = eval(f.replace('x', str(x1)))
+            Si abs(fx1) <= tol entonces
+                Devolver "La raíz de la función es: " + str(x1)
+            Fin Si
+            i += 1
+        Excepto ZeroDivisionError
+            Devolver "Error: División por cero."
+    Devolver "El método no converge después de %d iteraciones." % max_iter
+Fin Función
+
+# intervalo y tolerancia
+f = "x**2 - 2"
+x0 = 1
+x1 = 2
+tol = 1e-6
+max_iter = 5
+
+raiz = secante(f, x0, x1, tol, max_iter)
+Imprimir raiz
