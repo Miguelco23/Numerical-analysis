@@ -5,7 +5,7 @@ def GausTotal(A_, b_):
     A=np.array(A_)
     b = np.array(b_)
     n = A.shape[0]
-    M = np.concatenate((A, b), axis=1)
+    M = np.concatenate((A_, b_), axis=1)
     cambi = []
 
     # Reducimos el sistema
