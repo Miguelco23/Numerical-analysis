@@ -70,7 +70,13 @@ class JacobiandSeidelModel(BaseModel):
     x0:float
     tol:float
     nmax:float
-        
+
+class SplineModel(BaseModel):
+    x:list[float]
+    y:list[float]
+    
+
+
 @app.get('/')
 def main():
     return "Hola que mas?"
