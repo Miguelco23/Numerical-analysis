@@ -2,6 +2,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
+
 # Importamos los metodos numerico
 from metodos.biseccion import biseccion
 from metodos.busquedasinc import busqueda_inc
@@ -24,6 +26,20 @@ from metodos.Vandermonde import vandermonde
 
 
 app = FastAPI()
+
+# Configurar los orígenes permitidos en CORS
+origins = [
+    "http://localhost:3000",
+]
+
+# Configurar el middleware de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # class ListModel(BaseModel):
 #     l: list[int]
