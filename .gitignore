@@ -1,2 +1,9 @@
+#Python cache
 *.pyc
 __pycache__/**
+
+#Git ignore
+.gitignore
+
+#Python virtual environment
+numerical_back/
