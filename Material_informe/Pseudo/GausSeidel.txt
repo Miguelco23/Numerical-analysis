@@ -1,0 +1,21 @@
+Función GausSeidel(A, b, x0, tol, Nmax):
+    D = Matriz Diagonal de A
+    L = -Triangular Inferior de A + D
+    U = -Triangular Superior de A + D
+    T = Inversa de (D - L) multiplicado por U
+    C = Inversa de (D - L) multiplicado por b
+    xant = Copiar x0
+    E = 1000
+    cont = 0
+
+    Mientras E > tol y cont < Nmax:
+        xact = T multiplicado por xant más C
+        E = Norma de la diferencia entre xant y xact
+        xant = xact
+        cont += 1
+
+    x = xact
+    iterations = cont
+    err = E
+
+    Devolver x, iterations, err
