@@ -129,7 +129,7 @@ def solveJacobi(input: JacobiandSeidelModel):
 
 @app.post('/api/GausSeidel')
 def solveGausSeidel(input: JacobiandSeidelModel):
-    return({"Result":GausSediel(input.A, input.b, input.x0, input.tol, input.nmax)})
+    return({"Result":GausSeidel(input.A, input.b, input.x0, input.tol, input.nmax)})
 
 @app.post('/api/vandermonde')
 def solveDoolittle(input: InterpolationModel):
