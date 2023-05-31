@@ -11,28 +11,41 @@ public class Doolittle {
             L[i][i] = 1.0;
 
             for (int j = i; j < n; j++) {
-                double sum_1 = 0.0;
+                double sum1 = 0.0;
                 for (int k = 0; k < i; k++) {
-                    sum_1 += L[i][k] * U[k][j];
+                    sum1 += L[i][k] * U[k][j];
                 }
-                U[i][j] = A[i][j] - sum_1;
+                U[i][j] = A[i][j] - sum1;
             }
 
             for (int j = i + 1; j < n; j++) {
-                double sum_2 = 0.0;
+                double sum2 = 0.0;
                 for (int k = 0; k < i; k++) {
-                    sum_2 += L[j][k] * U[k][i];
+                    sum2 += L[j][k] * U[k][i];
                 }
-                L[j][i] = (A[j][i] - sum_2) / U[i][i];
+                L[j][i] = (A[j][i] - sum2) / U[i][i];
             }
         }
 
+        // Sustitución progresiva
         double[] y = new double[n];
         for (int i = 0; i < n; i++) {
-            double dotProduct = 0.0;
+            double sum = 0.0;
             for (int j = 0; j < i; j++) {
-                dotProduct += L[i][j] * y[j];
+                sum += L[i][j] * y[j];
             }
-            y[i] = (b[i] - dotProduct) / L[i][i];
+            y[i] = (b[i] - sum) / L[i][i];
         }
 
+        // Sustitución regresiva
+        for (int i = n - 1; i >= 0; i--) {
+            double sum = 0.0;
+            for (int j = i + 1; j < n; j++) {
+                sum += U[i][j] * x[j];
+            }
+            x[i] = (y[i] - sum) / U[i][i];
+        }
+
+        return x;
+    }
+}
