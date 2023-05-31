@@ -87,6 +87,7 @@ const Vandermonde = () => {
                 Degree:
                 <input type="number" value={degree} onChange={(e) => setDegree(e.target.value)} />
             </label>
+            <br />
             <button onClick={handleSubmit}>Calculate</button>
             {result && (
                 <div>

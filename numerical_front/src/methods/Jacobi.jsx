@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const Jacobi = () => {
     const [matrixData, setMatrixData] = useState([]);
     const [zData, setZData] = useState([]);
-    const [x0, setX0] = useState("");
+    const [x0, setX0] = useState([]);
     const [tolerance, setTolerance] = useState("");
     const [nMax, setNMax] = useState("");
     const [result, setResult] = useState(null);
@@ -15,6 +15,7 @@ const Jacobi = () => {
         }
         setMatrixData(Array.from({ length: size }, () => Array(size).fill(0)));
         setZData(Array(size).fill(0));
+        setX0(Array(size).fill(0));
         setResult(null);
     };
 
@@ -36,11 +37,20 @@ const Jacobi = () => {
         });
     };
 
+    const handleX0InputChange = (event, index) => {
+        const { value } = event.target;
+        setX0((prevX0) => {
+            const updatedX0 = [...prevX0];
+            updatedX0[index] = parseFloat(value);
+            return updatedX0;
+        });
+    };
+
     const handleSubmit = async () => {
         const data = {
             matrix: matrixData,
             z: zData,
-            x0: parseFloat(x0),
+            x0: x0,
             tolerance: parseFloat(tolerance),
             nMax: parseFloat(nMax)
         };
@@ -74,29 +84,38 @@ const Jacobi = () => {
         ));
     };
 
+    const renderX0Inputs = () => {
+        return x0.map((value, index) => (
+            <input
+                style={{ width: "30px" }}
+                key={index}
+                type="number"
+                onChange={(e) => handleX0InputChange(e, index)}
+            />
+        ));
+    };
+
     return (
         <div>
             <h2>Jacobi</h2>
             <div>
-                <label>Orden de la matriz:</label>
+                <label>Matrix order:</label>
                 <input type="number" min="1" onChange={handleMatrixSizeChange} />
             </div>
             <div>
-                <label>Matriz:</label>
+                <label>Matrix:</label>
                 {renderMatrixInputs()}
             </div>
             <div>
-                <label>Vector Z:</label>
+                <label>b:</label>
                 {renderZInputs()}
             </div>
-            <br />
+            <div>
+                <label>X0:</label>
+                {renderX0Inputs()}
+            </div>
             <label>
-                X0:
-                <input type="number" value={x0} onChange={(e) => setX0(e.target.value)} />
-            </label>
-            <br />
-            <label>
-                Tolerancia:
+                Tolerance:
                 <input type="number" value={tolerance} onChange={(e) => setTolerance(e.target.value)} />
             </label>
             <br />
@@ -105,10 +124,10 @@ const Jacobi = () => {
                 <input type="number" value={nMax} onChange={(e) => setNMax(e.target.value)} />
             </label>
             <br />
-            <button onClick={handleSubmit}>Calcular</button>
+            <button onClick={handleSubmit}>Calculate</button>
             {result && (
                 <div>
-                    <h3>Resultado:</h3>
+                    <h3>Result:</h3>
                     <p>{result}</p>
                 </div>
             )}
