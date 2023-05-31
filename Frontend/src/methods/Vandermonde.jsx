@@ -40,7 +40,28 @@ const Vandermonde = () => {
             degree: xData.length -1
         };
 
-        console.log(data);
+        console.log(JSON.stringify(data));
+
+        try { 
+            const response = await fetch('http://127.0.0.1:8000/api/vandermonde', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(data),
+            });
+          
+            if (!response.ok) {
+              throw new Error('Error al realizar la petición');
+            }
+          
+            const resultData = await response.json();
+            setResult(resultData.Result);
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Error:', error);
+          }
+          
     };
 
     const renderXInputs = () => {
@@ -86,7 +107,7 @@ const Vandermonde = () => {
             {result && (
                 <div>
                     <h3>Result:</h3>
-                    <p>{result}</p>
+                    <p><b>{result}</b></p>
                 </div>
             )}
         </div>
