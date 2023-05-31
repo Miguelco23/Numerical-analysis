@@ -67,7 +67,7 @@ class RaicesMultiplesModel(BaseModel):
 class JacobiandSeidelModel(BaseModel):
     A: list[list]
     b: list[int]
-    x0:float
+    x0:list[int]
     tol:float
     nmax:float
         
