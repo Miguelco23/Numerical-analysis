@@ -20,16 +20,4 @@ public class RaicesMultiples {
 
         return xact;
     }
-
-    public static void main(String[] args) {
-        DoubleUnaryOperator f = x -> Math.pow(x, 3) - 2 * x - 5;
-        DoubleUnaryOperator df = x -> 3 * Math.pow(x, 2) - 2;
-        DoubleUnaryOperator d2f = x -> 6 * x;
-        double x0 = 2.0;
-        double tol = 1e-6;
-        int Nmax = 100;
-
-        double x = raicesMultiples(f, df, d2f, x0, tol, Nmax);
-        System.out.println("La raíz encontrada es x = " + x);
-    }
 }
