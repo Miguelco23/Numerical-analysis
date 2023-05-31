@@ -20,4 +20,4 @@ def busqueda_inc(f, x0, h, nmax):
 
 
 # Ejemplo de como utilizar
-# busqueda_inc("(x**3)+3*xk+2",-2,0.0075,1000)
+# busqueda_inc("(x**3)+3*x+2",-2,0.0075,1000)
