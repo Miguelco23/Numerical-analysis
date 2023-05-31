@@ -2,10 +2,10 @@ import numpy as np
 
 def GausTotal(A_, b_):
     # Inicialización
-    n = A.shape[0]
-    M = np.concatenate((A_, b_), axis=1)
     A=np.array(A_)
     b = np.array(b_)
+    n = A.shape[0]
+    M = np.concatenate((A_, b_.reshape(n, 1)), axis=1)
     cambi = []
 
     # Reducimos el sistema
