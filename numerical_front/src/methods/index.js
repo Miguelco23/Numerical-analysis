@@ -15,3 +15,4 @@ export { default as Jacobi } from './Jacobi';
 export { default as GaussTotal } from './GaussTotal';
 export { default as GaussSeidel } from './GaussSeidel';
 export { default as Vandermonde } from './Vandermonde';
+export { default as Splines } from './Splines';

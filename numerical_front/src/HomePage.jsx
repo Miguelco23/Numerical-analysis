@@ -54,6 +54,8 @@ const HomePage = () => {
         return <Methods.Jacobi />;
       case "Vandermonde":
         return <Methods.Vandermonde />;
+      case "Splines":
+        return <Methods.Splines />;
       default:
         return null;
     }
@@ -124,6 +126,9 @@ const HomePage = () => {
       <div className="grid">
         <button className="homeButton" onClick={() => handleOpenModal("Vandermonde")}>
           Vandermonde
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Splines")}>
+          Quadratic Splines
         </button>
       </div>
 
