@@ -46,7 +46,7 @@ app.add_middleware(
 
 class MatrixSystemModel(BaseModel):
     A: list[list]
-    b: list[int]
+    b: list[float]
 
 class InterpolationModel(BaseModel):
     x: list
@@ -82,8 +82,8 @@ class RaicesMultiplesModel(BaseModel):
  
 class JacobiandSeidelModel(BaseModel):
     A: list[list]
-    b: list[int]
-    x0:list[int]
+    b: list[float]
+    x0:list[float]
     tol:float
     nmax:float
 
