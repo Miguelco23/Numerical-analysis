@@ -17,8 +17,8 @@ def RaicesMultiples(f, df, d2f, x0, tol, Nmax):
     
     # Entrega de resultados
     x = xact
-    iter = cont
+    iteraciones = cont
     err = E
     
-    return x, iter, err
+    return ({"x":x,"Iter":iteraciones, "Error":err})
 
