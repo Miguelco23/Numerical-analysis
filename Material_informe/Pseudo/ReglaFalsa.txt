@@ -1,0 +1,35 @@
+Función regla_falsa(f, a, b, tol, max_iter)
+    i = 0
+    Intentar
+        fa = eval(f.replace('x', 'a'))
+        fb = eval(f.replace('x', 'b'))
+        Mientras abs(b - a) > tol y i < max_iter hacer
+            c = (a * fb - b * fa) / (fb - fa)
+            fc = eval(f.replace('x', 'c'))
+            Si fa * fc < 0 entonces
+                b = c
+                fb = fc
+            Sino
+                a = c
+                fa = fc
+            Fin Si
+            i += 1
+        Fin Mientras
+        Si abs(b - a) > tol entonces
+            Imprimir "El método no converge después de %d iteraciones." % max_iter
+            Devolver Nulo
+        Devolver "La raiz de la funcion es: " + str(c)
+    Excepto ZeroDivisionError
+        Imprimir "Error: División por cero."
+        Devolver Nulo
+Fin Función
+
+# intervalo y tolerancia
+f = "x**2 - 2"
+a = 1
+b = 2
+tol = 1e-6
+max_iter = 100
+
+raiz = regla_falsa(f, a, b, tol, max_iter)
+Imprimir raiz
