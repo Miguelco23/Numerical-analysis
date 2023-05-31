@@ -20,7 +20,7 @@ const Biseccion = () => {
         tol: parseFloat(tolerance),
       };
 
-      console.log(data);
+      console.log(JSON.stringify(data));
 
       try { 
         const response = await fetch('http://127.0.0.1:8000/api/biseccion', {
