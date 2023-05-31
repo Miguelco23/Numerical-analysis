@@ -15,30 +15,35 @@ const Newton = () => {
             alert("Rellena todos los campos");
         } else {
             const data = {
-                func,
-                derivada,
+                f: func,
+                derf: derivada,
                 x0: parseFloat(x0),
-                tolerance: parseFloat(tolerance),
-                nMax: parseFloat(nMax),
+                tol: parseFloat(tolerance),
+                nmax: parseFloat(nMax),
             };
 
             console.log(data);
 
-            // try {
-            //   const response = await fetch('API_URL', {
-            //     method: 'POST',
-            //     headers: {
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify(data),
-            //   });
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/newton', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            //   const resultData = await response.json();
-            //   setResult(resultData.result);
-            // } catch (error) {
-            //   console.error('Error:', error);
-            //   alert('Error:', error);
-            // }
+                if (!response.ok) {
+                    throw new Error('Error al realizar la petición');
+                }
+
+                const resultData = await response.json();
+                setResult(resultData.Result);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error:', error);
+            }
+
         }
     };
 
