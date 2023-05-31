@@ -1,0 +1,40 @@
+Función GausTotal(A, b):
+    n = Tamaño de A (número de filas)
+    M = Concatenar(A, b) a lo largo del eje 1
+    cambi = Lista vacía para almacenar los intercambios de filas y columnas
+    
+    Para i desde 0 hasta n-1:
+        a, b = Índice de Valor Absoluto Máximo de M[i:, i:]
+        
+        Si b[0] + i != i:
+            Añadir [i, b[0] + i] a cambi
+            aux2 = Copiar M[:, b[0] + i]
+            M[:, b[0] + i] = M[:, i]
+            M[:, i] = aux2
+        
+        Si a[0] + i != i:
+            aux2 = Copiar M[i + a[0] - 1, i:n + 1]
+            M[a[0] + i - 1, i:n + 1] = M[i, i:n + 1]
+            M[i, i:n + 1] = aux2
+        
+        Para j desde i + 1 hasta n-1:
+            Si M[j, i] != 0:
+                M[j, i:n + 1] = M[j, i:n + 1] - (M[j, i] / M[i, i]) * M[i, i:n + 1]
+    
+    x = SustitucionRegresiva(M)  # Realizar sustitución regresiva
+    
+    Para i desde longitud(cambi) - 1 hasta 0 en pasos de -1:
+        aux = x[cambi[i][0]]
+        x[cambi[i][0]] = x[cambi[i][1]]
+        x[cambi[i][1]] = aux
+    
+    Devolver x
+
+Función SustitucionRegresiva(M):
+    n = Tamaño de M (número de filas)
+    x = Array de ceros de tamaño n
+    
+    Para i desde n-1 hasta 0 en pasos de -1:
+        x[i] = (M[i, n] - Producto Punto de M[i, i+1:n] y x[i+1:n]) / M[i, i]
+    
+    Devolver x
