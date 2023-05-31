@@ -19,7 +19,7 @@ def Jacobi(A, b, x0, tol, Nmax):
         cont += 1
     
     # Entrega de resultados
-    x = xact
+    x = xant
     iter = cont
     err = E
     return x, iter, err
