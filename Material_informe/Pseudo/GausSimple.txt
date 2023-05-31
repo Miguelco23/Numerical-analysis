@@ -1,21 +1,26 @@
-Función GausSimple(A, b):
-    n = Tamaño de A (número de filas)
-    M = Concatenar(A, Reshape(b, (n, 1)))  # Concatenar A y b como una matriz extendida
-    
-    Para i desde 0 hasta n-1:
-        Para j desde i+1 hasta n-1:
-            Si M[j, i] != 0:
-                M[j, i:n+1] = M[j, i:n+1] - (M[j, i]/M[i, i]) * M[i, i:n+1]
-    
-    x = SustitucionRegresiva(M)  # Realizar sustitución regresiva
-    
-    Devolver x
+Función GausSimple(A_, b_)
+    A = convertir_a_matriz(A_)
+    b = convertir_a_matriz(b_)
+    n = tamaño_fila(A)
+    M = concatenar((A, reshape(b, (n, 1))), eje=1)
 
-Función SustitucionRegresiva(M):
-    n = Tamaño de M (número de filas)
-    x = Array de ceros de tamaño n
-    
-    Para i desde n-1 hasta 0 en pasos de -1:
-        x[i] = (M[i, n] - Producto Punto de M[i, i+1:n] y x[i+1:n]) / M[i, i]
-    
+    Para i en rango(n-1) hacer
+        Para j en rango(i+1, n) hacer
+            Si M[j, i] != 0 entonces
+                M[j, i:n+1] = M[j, i:n+1] - (M[j, i]/M[i, i]) * M[i, i:n+1]
+            Fin Si
+        Fin Para
+    Fin Para
+
+    x = SustitucionRegresiva(M)
+    Devolver convertir_a_cadena(x)
+Fin Función
+
+Función SustitucionRegresiva(M)
+    n = tamaño_fila(M)
+    x = crear_arreglo(n)
+    Para i en rango(n-1, -1, -1) hacer
+        x[i] = (M[i, n] - producto_punto(M[i, i+1:n], x[i+1:n])) / M[i, i]
+    Fin Para
     Devolver x
+Fin Función
