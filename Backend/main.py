@@ -22,7 +22,7 @@ from metodos.GausSimple import GausSimple
 from metodos.Jacobi import Jacobi
 from metodos.LUSimple import LUSimple
 from metodos.Vandermonde import vandermonde
-
+from metodos.biseccion import biseccion
 
 
 app = FastAPI()
