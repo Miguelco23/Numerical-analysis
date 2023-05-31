@@ -42,10 +42,10 @@ const BusquedasInc = () => {
 
     return (
         <div>
-            <h2>Busquedas incrementales</h2>
+            <h2>Incremental Searches</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Funcion:
+                    Function:
                     <input type="text" value={func} onChange={(e) => setFunc(e.target.value)} />
                 </label>
                 <br />
@@ -64,9 +64,9 @@ const BusquedasInc = () => {
                     <input type="number" value={nMax} onChange={(e) => setNMax(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Calcular</button>
+                <button type="submit">Calculate</button>
             </form>
-            {result && <p>Resultado: {result}</p>}
+            {result && <p>Result: {result}</p>}
         </div>
     );
 };

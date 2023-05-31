@@ -44,7 +44,7 @@ const PuntoFijo = () => {
 
     return (
         <div>
-            <h2>Punto Fijo</h2>
+            <h2>Fixed point</h2>
             <form onSubmit={handleSubmit}>
                 <label>
                     F(x):
@@ -62,18 +62,18 @@ const PuntoFijo = () => {
                 </label>
                 <br />
                 <label>
-                    Tolerancia:
+                    Tolerance:
                     <input type="number" value={tolerance} onChange={(e) => setTolerance(e.target.value)} />
                 </label>
                 <br />
                 <label>
-                    N maxima:
+                    N max:
                     <input type="number" value={nMax} onChange={(e) => setNMax(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Calcular</button>
+                <button type="submit">Calculate</button>
             </form>
-            {result && <p>Resultado: {result}</p>}
+            {result && <p>Result: {result}</p>}
         </div>
     );
 };

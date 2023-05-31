@@ -70,23 +70,23 @@ const GaussParcial = () => {
 
   return (
     <div>
-      <h2>Eliminacion Gaussiana con pivoteo parcial</h2>
+      <h2>Gaussian elimination with partial pivoting</h2>
       <div>
-        <label>Orden de la matriz:</label>
+        <label>Matrix order:</label>
         <input type="number" min="1" onChange={handleMatrixSizeChange} />
       </div>
       <div>
-        <label>Matriz:</label>
+        <label>Matrix:</label>
         {renderMatrixInputs()}
       </div>
       <div>
-        <label>Vector Z:</label>
+        <label>b:</label>
         {renderZInputs()}
       </div>
-      <button onClick={handleSubmit}>Calcular</button>
+      <button onClick={handleSubmit}>Calculate</button>
       {result && (
         <div>
-          <h3>Resultado:</h3>
+          <h3>Result:</h3>
           <p>{result}</p>
         </div>
       )}

@@ -44,7 +44,7 @@ const Secante = () => {
 
   return (
     <div>
-      <h2>Secante</h2>
+      <h2>Secant</h2>
       <form onSubmit={handleSubmit}>
         <label>
           X0:
@@ -57,23 +57,23 @@ const Secante = () => {
         </label>
         <br />
         <label>
-          Funcion:
+          Function:
           <input type="text" value={func} onChange={(e) => setFunc(e.target.value)} />
         </label>
         <br />
         <label>
-          Tolerancia:
+          Tolerance:
           <input type="number" value={tolerance} onChange={(e) => setTolerance(e.target.value)} />
         </label>
         <br />
         <label>
-          Iteracion maxima:
+          Maximum Iteration:
           <input type="number" value={maxIter} onChange={(e) => setMaxIter(e.target.value)} />
         </label>
         <br />
-        <button type="submit">Calcular</button>
+        <button type="submit">Calculate</button>
       </form>
-      {result && <p>Resultado: {result}</p>}
+      {result && <p>Result: {result}</p>}
     </div>
   );
 };

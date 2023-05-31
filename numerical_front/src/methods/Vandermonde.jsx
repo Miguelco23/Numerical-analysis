@@ -3,7 +3,6 @@ import React, { useState } from "react";
 const Vandermonde = () => {
     const [xData, setXData] = useState([]);
     const [yData, setYData] = useState([]);
-    const [degree, setDegree] = useState("");
     const [result, setResult] = useState(null);
 
     const handleMatrixSizeChange = (event) => {
@@ -38,7 +37,7 @@ const Vandermonde = () => {
         const data = {
             x: xData,
             y: yData,
-            degree: parseFloat(degree)
+            degree: xData.length -1
         };
 
         console.log(data);
@@ -82,11 +81,6 @@ const Vandermonde = () => {
                 <label>Y vector:</label>
                 {renderYInputs()}
             </div>
-            <br />
-            <label>
-                Degree:
-                <input type="number" value={degree} onChange={(e) => setDegree(e.target.value)} />
-            </label>
             <br />
             <button onClick={handleSubmit}>Calculate</button>
             {result && (
