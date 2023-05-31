@@ -12,7 +12,7 @@ def busqueda_inc(f, x0, h, nmax):
         if fant * fact <0:
             # print(f"hay raiz entre {xant} y {xact}")
             # print(f"iters = {i}")
-            return(f"Raiz esta entre {xant} y {xact}. Salida con {i} iteraciones") # Retorna dos limites de el intervalo y las iteraciones
+            return(f"Root is between {xant} and {xact}. output with {i} iterations") # Retorna dos limites de el intervalo y las iteraciones
         xant = xact
         fant = fact
         xact = xant+h
