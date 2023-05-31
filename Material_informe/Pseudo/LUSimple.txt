@@ -1,0 +1,43 @@
+Función LUSimple(A_, b_)
+    A = convertir_a_matriz(A_)
+    b = convertir_a_matriz(b_)
+    n = tamaño_fila(A)
+    L = matriz_identidad(n)
+    U = crear_matriz_ceros(n, n)
+    M = copiar(A)
+
+    Para i en rango(n-1) hacer
+        Para j en rango(i+1, n) hacer
+            Si M[j, i] != 0 entonces
+                L[j, i] = M[j, i] / M[i, i]
+                M[j, i:n] = M[j, i:n] - (M[j, i] / M[i, i]) * M[i, i:n]
+            Fin Si
+        Fin Para
+        U[i, i:n] = M[i, i:n]
+        U[i+1, i+1:n] = M[i+1, i+1:n]
+    Fin Para
+    U[n-1, n-1] = M[n-1, n-1]
+
+    z = SustitucionProgresiva(concatenar((L, concatenar(b.reshape(n, 1)), eje=1)))
+    x = SustitucionRegresiva(concatenar((U, concatenar(z.reshape(n, 1)), eje=1)))
+    
+    Devolver {"x": convertir_a_cadena(x), "L": convertir_a_cadena(L), "U": convertir_a_cadena(U)}
+Fin Función
+
+Función SustitucionProgresiva(M)
+    n = tamaño_fila(M)
+    z = crear_arreglo(n)
+    Para i en rango(n) hacer
+        z[i] = (M[i, n] - producto_punto(M[i, :i], z[:i])) / M[i, i]
+    Fin Para
+    Devolver z
+Fin Función
+
+Función SustitucionRegresiva(M)
+    n = tamaño_fila(M)
+    x = crear_arreglo(n)
+    Para i en rango(n-1, -1, -1) hacer
+        x[i] = (M[i, n] - producto_punto(M[i, i+1:n], x[i+1:n])) / M[i, i]
+    Fin Para
+    Devolver x
+Fin Función
