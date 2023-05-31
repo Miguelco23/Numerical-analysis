@@ -1,7 +1,9 @@
 import numpy as np
 
-def GausTotal(A, b):
+def GausTotal(A_, b_):
     # Inicialización
+    A=np.array(A_)
+    b = np.array(b_)
     n = A.shape[0]
     M = np.concatenate((A, b), axis=1)
     cambi = []
@@ -36,7 +38,7 @@ def GausTotal(A, b):
         x[cambi[i][0]] = x[cambi[i][1]]
         x[cambi[i][1]] = aux
     
-    return x
+    return np.array2string(x)
   
 def SustitucionRegresiva(M):
     n = M.shape[0]
