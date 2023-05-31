@@ -17,28 +17,33 @@ const Secante = () => {
       const data = {
         x0: parseFloat(x0),
         x1: parseFloat(x1),
-        func,
-        tolerance: parseFloat(tolerance),
-        maxIter: parseFloat(maxIter)
+        f: func,
+        tol: parseFloat(tolerance),
+        max_iter: parseFloat(maxIter)
       };
 
       console.log(data);
 
-      // try {
-      //   const response = await fetch('API_URL', {
-      //     method: 'POST',
-      //     headers: {
-      //       'Content-Type': 'application/json',
-      //     },
-      //     body: JSON.stringify(data),
-      //   });
+      try { 
+        const response = await fetch('http://127.0.0.1:8000/api/secante', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+      
+        if (!response.ok) {
+          throw new Error('Error al realizar la petición');
+        }
+      
+        const resultData = await response.json();
+        setResult(resultData.Result);
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Error:', error);
+      }
 
-      //   const resultData = await response.json();
-      //   setResult(resultData.result);
-      // } catch (error) {
-      //   console.error('Error:', error);
-      //   alert('Error:', error);
-      // }
     }
   };
 
