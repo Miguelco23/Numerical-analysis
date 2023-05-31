@@ -1,12 +1,12 @@
-Función GausSeidel(A_, b_, x0_, tol, Nmax)
+Función Jacobi(A_, b_, x0_, tol, Nmax)
     A = convertir_a_matriz(A_)
     b = convertir_a_matriz(b_)
     x0 = convertir_a_matriz(x0_)
     D = diag(diagonal(A))
     L = -tril(A) + D
     U = -triu(A) + D
-    T = inv(D - L) * U
-    C = inv(D - L) * b
+    T = inv(D) * (L + U)
+    C = inv(D) * b
     xant = copiar(x0)
     E = 1000
     cont = 0
@@ -18,7 +18,7 @@ Función GausSeidel(A_, b_, x0_, tol, Nmax)
         cont = cont + 1
     Fin Mientras
 
-    x = xact
+    x = xant
     iteraciones = cont
     err = E
 

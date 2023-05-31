@@ -1,7 +1,9 @@
 import numpy as np
 
-def GausSimple(A, b):
+def GausSimple(A_, b_):
     # Inicialización
+    A=np.array(A_)
+    b = np.array(b_)
     n = A.shape[0]
     M = np.concatenate((A, b.reshape(n, 1)), axis=1)
     
@@ -15,7 +17,7 @@ def GausSimple(A, b):
     x = SustitucionRegresiva(M)
     
     # Entrega de resultados
-    return x
+    return np.array2string(x)
 
 def SustitucionRegresiva(M):
     n = M.shape[0]
