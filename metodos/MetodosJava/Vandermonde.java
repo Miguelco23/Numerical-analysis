@@ -24,13 +24,4 @@ public class Vandermonde {
 
         return coefficients;
     }
-
-    public static void main(String[] args) {
-        List<Double> x = List.of(-2.0, -1.0, 2.0, 3.0);
-        List<Double> y = List.of(12.13533528, 6.367879441, -4.610943901, 2.085536923);
-        int degree = 3;
-
-        List<Double> coefficients = vandermonde(x, y, degree);
-        System.out.println(coefficients);
-    }
 }
