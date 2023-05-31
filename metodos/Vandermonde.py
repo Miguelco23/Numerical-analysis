@@ -7,8 +7,13 @@ def vandermonde(x, y, degree):
         raise ValueError("Las entradas deben tener la misma longitud")
 
     # Crear la matriz de vandermonde
-    vander_matrix = np.vander(x, degree + 1, increasing=True)
-    # print(vander_matrix)
+    vander_matrix = []
+
+    for i in range(n):
+        row = []
+        for j in range(degree + 1):
+            row.append(x[i] ** j)
+        vander_matrix.append(row)
 
     # Resolver el sistema lineal
     coefficients = crout(vander_matrix, y)
