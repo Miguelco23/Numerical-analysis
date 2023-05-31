@@ -52,6 +52,8 @@ const HomePage = () => {
         return <Methods.GaussSeidel />;
       case "Jacobi":
         return <Methods.Jacobi />;
+      case "Vandermonde":
+        return <Methods.Vandermonde />;
       default:
         return null;
     }
@@ -120,7 +122,9 @@ const HomePage = () => {
 
       <h2 className="sectionTitle">Interpolación</h2>
       <div className="grid">
-        {/* Agrega aquí los botones correspondientes a los métodos de interpolación */}
+        <button className="homeButton" onClick={() => handleOpenModal("Vandermonde")}>
+          Vandermonde
+        </button>
       </div>
 
       <Modal

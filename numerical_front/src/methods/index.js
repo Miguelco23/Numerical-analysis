@@ -14,3 +14,4 @@ export { default as LuGaussiana } from './LuGaussiana';
 export { default as Jacobi } from './Jacobi';
 export { default as GaussTotal } from './GaussTotal';
 export { default as GaussSeidel } from './GaussSeidel';
+export { default as Vandermonde } from './Vandermonde';
