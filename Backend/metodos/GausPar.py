@@ -1,7 +1,9 @@
 import numpy as np
 
-def GausPar(A, b):
+def GausPar(A_, b_):
     # Inicialización
+    A=np.array(A_)
+    b = np.array(b_)
     n = A.shape[0]
     M = np.concatenate((A, b.reshape(n, 1)), axis=1)
     
@@ -20,7 +22,7 @@ def GausPar(A, b):
     
     # Entrega de resultados
     x = SustitucionRegresiva(M)  # Sustitución regresiva
-    return x
+    return return "x": np.array2string(x)
 
 def SustitucionRegresiva(M):
     n = M.shape[0]

@@ -1,7 +1,9 @@
 import numpy as np
 
-def LUSimple(A, b):
+def LUSimple(A_, b_):
     # Inicialización
+    A=np.array(A_)
+    b = np.array(b_)
     n = A.shape[0]
     L = np.eye(n)
     U = np.zeros((n, n))
@@ -20,7 +22,7 @@ def LUSimple(A, b):
     # Entrega de resultados
     z = SustitucionProgresiva(np.concatenate((L, b.reshape(n, 1)), axis=1))
     x = SustitucionRegresiva(np.concatenate((U, z.reshape(n, 1)), axis=1))
-    return x, L, U
+    return {"x": np.array2string(x),"L": np.array2string(L), "U":np.array2string(U)}
 
 def SustitucionProgresiva(M):
     n = M.shape[0]
@@ -34,4 +36,4 @@ def SustitucionRegresiva(M):
     x = np.zeros(n)
     for i in range(n-1, -1, -1):
         x[i] = (M[i, n] - np.dot(M[i, i+1:n], x[i+1:n])) / M[i, i]
-    return x
+    return (x)

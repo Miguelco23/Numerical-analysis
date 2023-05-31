@@ -1,7 +1,10 @@
 import numpy as np
 
-def GausSeidel(A, b, x0, tol, Nmax):
+def GausSeidel(A_, b_, x0_, tol, Nmax):
     # Inicialización
+    A=np.array(A_)
+    b = np.array(b_)
+    x0 = np.array(x0_)
     D = np.diag(np.diag(A))
     L = -np.tril(A) + D
     U = -np.triu(A) + D
@@ -23,4 +26,4 @@ def GausSeidel(A, b, x0, tol, Nmax):
     iterations = cont
     err = E
 
-    return x, iterations, err
+    return ({"x":x,"iterations":iterations,"Error":err})
