@@ -21,7 +21,7 @@ All the commands are for be made in the terminal
 ### For backend
 - [Install Python](https://www.python.org/downloads/)
 - Create de enviroment (Recomended but optional)
-    - `pytnon -m venv env_name`
+    - `python -m venv env_name`
     - for windows: `source env_name/Scripts/activate`
     - for mac: `source env_name/bin/activate`
 - Install the libraries
