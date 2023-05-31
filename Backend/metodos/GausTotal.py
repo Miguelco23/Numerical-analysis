@@ -5,29 +5,25 @@ def GausTotal(A_, b_):
     A=np.array(A_)
     b = np.array(b_)
     n = A.shape[0]
-    M = np.concatenate((A_, b_.reshape(n, 1)), axis=1)
+    M = np.hstack((A, b.reshape(n, 1)))
     cambi = []
-
+    
     # Reducimos el sistema
     for i in range(n - 1):
         a, b = np.unravel_index(np.argmax(np.abs(M[i:, i:])), (n - i, n - i))
         
         # Cambio de columna
-        if b[0] + i != i:
-            cambi.append([i, b[0] + i])
-            aux2 = M[:, b[0] + i].copy()
-            M[:, b[0] + i] = M[:, i]
-            M[:, i] = aux2
+        if b + i != i:
+            cambi.append([i, b + i])
+            M[:, [b + i, i]] = M[:, [i, b + i]]
         
         # Cambio de filas
-        if a[0] + i != i:
-            aux2 = M[i + a[0] - 1, i:n + 1].copy()
-            M[a[0] + i - 1, i:n + 1] = M[i, i:n + 1]
-            M[i, i:n + 1] = aux2
+        if a + i != i:
+            M[[a + i, i], i:] = M[[i, a + i], i:]
         
         for j in range(i + 1, n):
             if M[j, i] != 0:
-                M[j, i:n + 1] = M[j, i:n + 1] - (M[j, i] / M[i, i]) * M[i, i:n + 1]
+                M[j, i:] = M[j, i:] - (M[j, i] / M[i, i]) * M[i, i:]
     
     # Entrega de resultados
     x = SustitucionRegresiva(M)  # Sustitución regresiva
@@ -37,7 +33,7 @@ def GausTotal(A_, b_):
         aux = x[cambi[i][0]]
         x[cambi[i][0]] = x[cambi[i][1]]
         x[cambi[i][1]] = aux
-    
+        
     return np.array2string(x)
   
 def SustitucionRegresiva(M):
