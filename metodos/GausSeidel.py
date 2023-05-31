@@ -20,7 +20,7 @@ def GausSeidel(A, b, x0, tol, Nmax):
 
     # Entrega de resultados
     x = xact
-    iter = cont
+    iterations = cont
     err = E
 
-    return x, iter, err
+    return x, iterations, err
