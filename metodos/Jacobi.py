@@ -7,7 +7,7 @@ def Jacobi(A, b, x0, tol, Nmax):
     U = -np.triu(A) + D
     T = np.linalg.inv(D).dot(L + U)
     C = np.linalg.inv(D).dot(b)
-    xant = x0
+    xant = x0[0]
     E = 1000
     cont = 0
     
