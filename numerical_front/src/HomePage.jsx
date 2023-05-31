@@ -44,10 +44,18 @@ const HomePage = () => {
         return <Methods.GaussSencilla />;
       case "GausPar":
         return <Methods.GaussParcial />;
+      case "GausTotal":
+        return <Methods.GaussTotal />;
       case "LUSimple":
         return <Methods.LuGaussiana />;
+      case "GausSeidel":
+        return <Methods.GaussSeidel />;
       case "Jacobi":
         return <Methods.Jacobi />;
+      case "Vandermonde":
+        return <Methods.Vandermonde />;
+      case "Splines":
+        return <Methods.Splines />;
       default:
         return null;
     }
@@ -55,34 +63,34 @@ const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1>Metodos Numericos</h1>
+      <h1>Numerical analysis</h1>
 
-      <h2 className="sectionTitle">Ecuaciones de una variable</h2>
+      <h2 className="sectionTitle">One variable Equations</h2>
       <div className="grid">
         <button className="homeButton" onClick={() => handleOpenModal("biseccion")}>
-          Bisección
+          Bisection
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("busquedasinc")}>
-          Búsquedas Incrementales
+          Incremental Searches
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("Newton")}>
           Newton
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("puntoFijo")}>
-          Punto Fijo
+          Fixed Point
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("RaicesMultiples")}>
-          Raíces Múltiples
+          Multiple Roots
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("reglaFalsa")}>
-          Regla Falsa
+          False Rule
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("secante")}>
-          Secante
+          Secant
         </button>
       </div>
 
-      <h2 className="sectionTitle">Sistemas de ecuaciones</h2>
+      <h2 className="sectionTitle">Ecuation systems</h2>
       <div className="grid">
         <button className="homeButton" onClick={() => handleOpenModal("Cholesky")}>
           Cholesky
@@ -94,22 +102,34 @@ const HomePage = () => {
           Doolittle
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("GausSimple")}>
-          Eliminacion Gaussiana Sencilla
+          Simple Gaussian Elimination
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("GausPar")}>
-          Eliminacion Gaussiana con pivoteo parcial
+          Gaussian elimination with partial pivoting
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("GausTotal")}>
+          Gaussian elimination with full pivoting
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("LUSimple")}>
-          Factorizacion LU con eliminacion Gaussiana
+          LU factorization with Gaussian elimination
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("GausSeidel")}>
+          Gauss-Seidel
         </button>
         <button className="homeButton" onClick={() => handleOpenModal("Jacobi")}>
           Jacobi
         </button>
+
       </div>
 
-      <h2 className="sectionTitle">Interpolación</h2>
+      <h2 className="sectionTitle">Interpolation</h2>
       <div className="grid">
-        {/* Agrega aquí los botones correspondientes a los métodos de interpolación */}
+        <button className="homeButton" onClick={() => handleOpenModal("Vandermonde")}>
+          Vandermonde
+        </button>
+        <button className="homeButton" onClick={() => handleOpenModal("Splines")}>
+          Quadratic Splines
+        </button>
       </div>
 
       <Modal
@@ -119,7 +139,7 @@ const HomePage = () => {
         overlayClassName="overlay"
       >
         {selectedMethod()}
-        <button onClick={handleCloseModal}>Cerrar</button>
+        <button onClick={handleCloseModal}>Close</button>
       </Modal>
     </div>
   );

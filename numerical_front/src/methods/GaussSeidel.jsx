@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Jacobi = () => {
+const GaussSeidel = () => {
     const [matrixData, setMatrixData] = useState([]);
     const [zData, setZData] = useState([]);
     const [x0, setX0] = useState([]);
@@ -97,7 +97,7 @@ const Jacobi = () => {
 
     return (
         <div>
-            <h2>Jacobi</h2>
+            <h2>Gauss-Seidel</h2>
             <div>
                 <label>Matrix order:</label>
                 <input type="number" min="1" onChange={handleMatrixSizeChange} />
@@ -135,4 +135,4 @@ const Jacobi = () => {
     );
 };
 
-export default Jacobi;
+export default GaussSeidel;

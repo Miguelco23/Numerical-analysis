@@ -28,7 +28,7 @@ def GausTotal(A, b):
                 M[j, i:n + 1] = M[j, i:n + 1] - (M[j, i] / M[i, i]) * M[i, i:n + 1]
     
     # Entrega de resultados
-    x = sustregr(M)  # Sustitución regresiva
+    x = SustitucionRegresiva(M)  # Sustitución regresiva
     
     # Reordenamos el vector solución
     for i in range(len(cambi) - 1, -1, -1):

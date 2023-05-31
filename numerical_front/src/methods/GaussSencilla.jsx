@@ -70,23 +70,23 @@ const GaussSencilla = () => {
 
   return (
     <div>
-      <h2>Eliminacion Gaussiana Sencilla</h2>
+      <h2>Simple Gaussian Elimination</h2>
       <div>
-        <label>Orden de la matriz:</label>
+        <label>matrix order:</label>
         <input type="number" min="1" onChange={handleMatrixSizeChange} />
       </div>
       <div>
-        <label>Matriz:</label>
+        <label>Matrix:</label>
         {renderMatrixInputs()}
       </div>
       <div>
-        <label>Vector Z:</label>
+        <label>b:</label>
         {renderZInputs()}
       </div>
-      <button onClick={handleSubmit}>Calcular</button>
+      <button onClick={handleSubmit}>Calculate</button>
       {result && (
         <div>
-          <h3>Resultado:</h3>
+          <h3>Result:</h3>
           <p>{result}</p>
         </div>
       )}

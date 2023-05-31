@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Doolittle = () => {
+const GaussTotal = () => {
   const [matrixData, setMatrixData] = useState([]);
   const [zData, setZData] = useState([]);
   const [result, setResult] = useState(null);
@@ -70,9 +70,9 @@ const Doolittle = () => {
 
   return (
     <div>
-      <h2>Doolittle</h2>
+      <h2>Gaussian elimination with full pivoting</h2>
       <div>
-        <label>Matrix order:</label>
+        <label>Matrix Order:</label>
         <input type="number" min="1" onChange={handleMatrixSizeChange} />
       </div>
       <div>
@@ -83,7 +83,7 @@ const Doolittle = () => {
         <label>b:</label>
         {renderZInputs()}
       </div>
-      <button onClick={handleSubmit}>Calcular</button>
+      <button onClick={handleSubmit}>Calculate</button>
       {result && (
         <div>
           <h3>Result:</h3>
@@ -94,4 +94,4 @@ const Doolittle = () => {
   );
 };
 
-export default Doolittle;
+export default GaussTotal;

@@ -42,31 +42,31 @@ const Biseccion = () => {
 
   return (
     <div>
-      <h2>Biseccion</h2>
+      <h2>Bisection</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          Intervalo [a]:
+          Interval [a]:
           <input type="number" value={a} onChange={(e) => setA(e.target.value)} />
         </label>
         <br />
         <label>
-          Intervalo [b]:
+          Interval [b]:
           <input type="number" value={b} onChange={(e) => setB(e.target.value)} />
         </label>
         <br />
         <label>
-          Funcion:
+          Function:
           <input type="text" value={func} onChange={(e) => setFunc(e.target.value)} />
         </label>
         <br />
         <label>
-          Tolerancia:
+          Tolerance:
           <input type="number" value={tolerance} onChange={(e) => setTolerance(e.target.value)} />
         </label>
         <br />
-        <button type="submit">Calcular</button>
+        <button type="submit">Calculate</button>
       </form>
-      {result && <p>Resultado: {result}</p>}
+      {result && <p>Result: {result}</p>}
     </div>
   );
 };

@@ -47,12 +47,12 @@ const Newton = () => {
             <h2>Newton</h2>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Funcion:
+                    Function:
                     <input type="text" value={func} onChange={(e) => setFunc(e.target.value)} />
                 </label>
                 <br />
                 <label>
-                    Derivada:
+                    Derivative:
                     <input type="text" value={derivada} onChange={(e) => setDerivada(e.target.value)} />
                 </label>
                 <br />
@@ -62,7 +62,7 @@ const Newton = () => {
                 </label>
                 <br />
                 <label>
-                    Tolerancia:
+                    Tolerance:
                     <input type="number" value={tolerance} onChange={(e) => setTolerance(e.target.value)} />
                 </label>
                 <br />
@@ -71,9 +71,9 @@ const Newton = () => {
                     <input type="number" value={nMax} onChange={(e) => setNMax(e.target.value)} />
                 </label>
                 <br />
-                <button type="submit">Calcular</button>
+                <button type="submit">Calculate</button>
             </form>
-            {result && <p>Resultado: {result}</p>}
+            {result && <p>Result: {result}</p>}
         </div>
     );
 };
