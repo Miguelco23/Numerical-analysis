@@ -22,7 +22,7 @@ def GausPar(A_, b_):
     
     # Entrega de resultados
     x = SustitucionRegresiva(M)  # Sustitución regresiva
-    return return "x": np.array2string(x)
+    return {"x": np.array2string(x)}
 
 def SustitucionRegresiva(M):
     n = M.shape[0]

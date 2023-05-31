@@ -26,4 +26,4 @@ def Jacobi(A_, b_, x0_, tol, Nmax):
     iterations = cont
     err = E
 
-    return ({"x":x,"iterations":iterations,"Error":err})
+    return ({"x":np.array2string(x),"iterations":iterations,"Error":err})
