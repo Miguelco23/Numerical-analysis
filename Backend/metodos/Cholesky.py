@@ -41,4 +41,4 @@ def cholesky(A, b, Err):
        return ({"Solution: ":x, "Relative error: ":error_relativo})
       
     else:
-      return "The value entered for the errors does not correspond to any of the errors that I know can request"
+      return "Invalid value for parameter Err. It should be 1 (absolute error) or 2 (relative error)."
