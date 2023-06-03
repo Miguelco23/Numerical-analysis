@@ -49,24 +49,3 @@ def doolittle(A, b, Err):
     solver = DoolittleSolver(A, b)
     result = solver.solve()
     return result
-
-A = np.array([[36, 3, -4, 5],
-              [5, -45, 10, -2],
-              [6, 8, 57, 5],
-              [2, 3, -8, -42]])
-
-b = np.array([-20, 69, 96, -32])
-
-# Calculate solution and absolute error
-solution, absolute_error = doolittle(A, b, Err=1)
-print("Solution:", solution)
-print("Absolute error:", absolute_error)
-
-# Calculate solution and relative error
-solution, relative_error = doolittle(A, b, Err=2)
-print("Solution:", solution)
-print("Relative error:", relative_error)
-
-# Test case with invalid Err value
-result = doolittle(A, b, Err=3)
-print(result)
