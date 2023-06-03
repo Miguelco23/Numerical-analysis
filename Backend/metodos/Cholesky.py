@@ -25,11 +25,9 @@ def cholesky(A, b):
     for i in range(n - 1, -1, -1):
         x[i] = (y[i] - np.dot(L[i + 1:, i], x[i + 1:])) / L[i, i]
 
-    return np.array2string(x)
+    # Cálculo de errores
+    Ax = np.dot(A, x)
+    error_absoluto = np.linalg.norm(b - Ax)
+    error_relativo = error_absoluto / np.linalg.norm(b)
 
-# A = [[1,-1,1],
-#     [-1,5,-5],
-#     [1,-5,6]]
-
-# b = [2,-6,9]
-# print(cholesky(A,b)
+    return x, error_absoluto, error_relativo
