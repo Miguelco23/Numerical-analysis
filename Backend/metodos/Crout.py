@@ -1,6 +1,6 @@
 import numpy as np
 
-def crout(A, b):
+def crout(A, b, x_exacto, Err):
     A = np.array(A)
     b = np.array(b)
     n = len(A)
@@ -17,25 +17,33 @@ def crout(A, b):
 
         for i in range(j, n):
             sum_2 = sum(L[i][k] * U[k][j] for k in range(j))
-            L[i][j] = (A[i][j] - sum_2) / U[j][j]
+            if U[j][j] != 0:
+                L[i][j] = (A[i][j] - sum_2) / U[j][j]
+            else:
+                L[i][j] = 0
 
     # sub progresiva
     y = np.zeros(n)
     for i in range(n):
-        y[i] = (b[i] - np.dot(L[i, :i], y[:i])) / L[i, i]
+        if L[i, i] != 0:
+            y[i] = (b[i] - np.dot(L[i, :i], y[:i])) / L[i, i]
+        else:
+            y[i] = 0
 
     # sub regresiva
     for i in range(n - 1, -1, -1):
-        x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
+        if U[i, i] != 0:
+            x[i] = (y[i] - np.dot(U[i, i + 1:], x[i + 1:])) / U[i, i]
+        else:
+            x[i] = 0
 
-    return np.array2string(x)
-
-
-# A =           [[36,3,-4,5],
-#               [5,-45,10,-2],
-#               [6,8,57,5],
-#               [2,3,-8,-42]]
-
-# b = [-20,69,96,-32]
-
-# print(crout(A,b))
+    if Err == 1:
+        error_absoluto = np.linalg.norm(x - x_exacto)
+        error_relativo = error_absoluto / np.linalg.norm(x_exacto)
+        return ({"Solution: ": x, "Absolute error: ": error_absoluto})
+    elif Err == 2:
+        error_absoluto = np.linalg.norm(x - x_exacto)
+        error_relativo = error_absoluto / np.linalg.norm(x_exacto)
+        return ({"Solution: ": x, "Relative error: ": error_relativo})
+    else:
+        return "The value entered for the errors does not correspond to any of the errors that I know can request"
