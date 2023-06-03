@@ -2,7 +2,7 @@ import numpy as np
 
 def SplinesCuadratico(x_, y_, Err):
     if len(x_) != len(y_):
-        return "Los tamaños ingresados de X y Y no son iguales. Por lo tanto no se puede calcular"
+        return "The entered sizes of X and Y are not equal. Therefore it cannot be calculated"
     
     m = len(x_)
     n = m-1
@@ -59,7 +59,7 @@ def SplinesCuadratico(x_, y_, Err):
     temp = 0
     
     for g in range(0, intd):
-        polinomio = "Polinomio " + str(NumPol) + ": " + str(coeficientes[temp]) + "x^2 + " + str(coeficientes[temp+1]) + "x + " + str(coeficientes[temp+2])
+        polinomio = "Polynomial " + str(NumPol) + ": " + str(coeficientes[temp]) + "x^2 + " + str(coeficientes[temp+1]) + "x + " + str(coeficientes[temp+2])
         Polinomios.append(polinomio)
         NumPol += 1
         temp += 3
@@ -90,4 +90,4 @@ def SplinesCuadratico(x_, y_, Err):
     
         return Polinomios, errores_relativos
     else:
-        return "El valor ingresado para los errores no corresponde a ninguno de los errores que sé pueden solicitar"
+        return "The value entered for the errors does not correspond to any of the errors that I know can request"
