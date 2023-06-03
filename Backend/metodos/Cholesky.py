@@ -1,6 +1,6 @@
 import numpy as np
 
-def cholesky(A, b):
+def cholesky(A, b, Err):
     A = np.array(A)
     b = np.array(b)
     n = len(A)
@@ -26,8 +26,19 @@ def cholesky(A, b):
         x[i] = (y[i] - np.dot(L[i + 1:, i], x[i + 1:])) / L[i, i]
 
     # Cálculo de errores
-    Ax = np.dot(A, x)
-    error_absoluto = np.linalg.norm(b - Ax)
-    error_relativo = error_absoluto / np.linalg.norm(b)
+    if Err == 1:
+       Ax = np.dot(A, x)
+       error_absoluto = np.linalg.norm(b - Ax)
+       error_relativo = error_absoluto / np.linalg.norm(b)
 
-    return x, error_absoluto, error_relativo
+       return ({"Solution: ":x, "Absolute error: ":error_absoluto})
+      
+    elif Err ==2:
+       Ax = np.dot(A, x)
+       error_absoluto = np.linalg.norm(b - Ax)
+       error_relativo = error_absoluto / np.linalg.norm(b)
+
+       return ({"Solution: ":x, "Relative error: ":error_relativo})
+      
+    else:
+      return "The value entered for the errors does not correspond to any of the errors that I know can request"
