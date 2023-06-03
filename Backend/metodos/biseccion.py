@@ -1,29 +1,27 @@
-def biseccion(f, a, b, tol):
-
-    # Evaluar la cadena de texto como una función
-    def evaluar_funcion(x):
+def bisection(f, a, b, tol, Err):
+    # Evaluate the string as a function
+    def evaluate_function(x):
         return eval(f)
 
-    if evaluar_funcion(a) * evaluar_funcion(b) >= 0:
-        print("Error: La función no cambia de signo en el intervalo dado.")
+    if evaluate_function(a) * evaluate_function(b) >= 0:
+        print("Error: The function does not change sign in the given interval.")
         return None
+    elif Err == 1:
+        error_function = lambda c: abs(evaluate_function(c))
+    elif Err == 2:
+        error_function = lambda c: abs((b - a) / c)
     else:
+        print("Invalid value for the Err parameter. It should be 1 (absolute error) or 2 (relative error).")
+        return None
+
+    c = (a + b) / 2
+    error = error_function(c)
+    while error > tol:
+        if evaluate_function(a) * evaluate_function(c) < 0:
+            b = c
+        else:
+            a = c
         c = (a + b) / 2
-        while abs(evaluar_funcion(c)) > tol:
-            if evaluar_funcion(a) * evaluar_funcion(c) < 0:
-                b = c
-            else:
-                a = c
-            c = (a + b) / 2
-        return c
+        error = error_function(c)
 
-# Cadena de texto que representa la función
-f = "x**2 - 2"
-
-# Intervalo y tolerancia
-a = 0
-b = 2
-tol = 1e-6
-
-# raiz = biseccion(f, a, b, tol)
-# print("La raíz de la función es:", raiz)
+    return c, error
