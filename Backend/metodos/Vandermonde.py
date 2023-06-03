@@ -1,29 +1,31 @@
 import numpy as np
-from .Crout import crout
 
-def vandermonde(x, y, degree):
+def vandermonde(x, y, Err):
     n = len(x)
     if len(y) != n:
         raise ValueError("Las entradas deben tener la misma longitud")
 
-    # Crear la matriz de vandermonde
-    vander_matrix = []
+    degree = n - 1  # Grado del polinomio ajustado
 
-    for i in range(n):
-        row = []
-        for j in range(degree + 1):
-            row.append(x[i] ** j)
-        vander_matrix.append(row)
+    # Crear la matriz de Vandermonde
+    vander_matrix = np.vander(x, degree + 1, increasing=False)
 
     # Resolver el sistema lineal
-    coefficients = crout(vander_matrix, y)
+    coefficients = np.linalg.solve(vander_matrix, y)
 
-    return coefficients
+    # Calcular las aproximaciones
+    approximations = np.polyval(coefficients[::-1], x)
 
-# Como usar:
-x = [-2, -1, 2, 3]
-y = [12.13533528, 6.367879441, -4.610943901, 2.085536923]
-degree = 3
+    if Err == 1:
+        # Calcular los errores absolutos
+        absolute_errors = np.abs(approximations - y)
+        return coefficients, absolute_errors
 
-coefficients = vandermonde(x, y, degree)
-print(coefficients)
+    elif Err == 2:
+        # Calcular los errores relativos
+        absolute_errors = np.abs(approximations - y)
+        relative_errors = (absolute_errors / np.abs(y)) * 100
+        return coefficients, relative_errors
+
+    else:
+        return "Invalid value for parameter Err. It should be 1 (absolute error) or 2 (relative error)."
