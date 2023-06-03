@@ -76,7 +76,7 @@ def SplinesCuadratico(x_, y_, Err):
             errores_absolutos.append(error_absoluto)
             errores_relativos.append(error_relativo)
     
-        return Polinomios, errores_absolutos
+        return ({"Polynomials: ":Polinomios, "Absolute error: ":errores_absolutos})
     elif Err == 2:
         for j in range(len(x_)):
             polinomio_actual = coeficientes[j//2*3:j//2*3+3]
