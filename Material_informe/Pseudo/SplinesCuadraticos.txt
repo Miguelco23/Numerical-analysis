@@ -1,0 +1,91 @@
+Función SplinesCuadratico(x_, y_, Err)
+    Si longitud(x_) != longitud(y_) entonces
+        Devolver "Los tamaños ingresados de X y Y no son iguales. Por lo tanto no se puede calcular"
+    
+    m = longitud(x_)
+    n = m-1
+    A = matriz de ceros de tamaño 3n x 3n
+    b = matriz de ceros de tamaño 3n x 1
+    
+    A[0, 0:3] = [x_[0]^2, x_[0], 1]
+    b[0] = y_[0]
+    
+    i = 1  # Contador de filas primer cambio
+    j = 0  # Contador de columnas primer cambio
+    c = 1  # Contador de filas segundo cambio
+    v = 3  # Contador de columnas segundo cambio
+    
+    Para k en rango(1, n) hacer
+        A[i, j] = x_[k]^2
+        A[i, j+1] = x_[k]
+        A[i, j+2] = 1
+        b[i] = y_[k]
+        A[c+1, v] = x_[k]^2
+        A[c+1, v+1] = x_[k]
+        A[c+1, v+2] = 1
+        b[c+1] = y_[k]
+        c += 2
+        v += 3
+        i += 2
+        j += 3
+    
+    A[i, j] = x_[k+1]^2
+    A[i, j+1] = x_[k+1]
+    A[i, j+2] = 1
+    b[i] = y_[k+1]
+    i += 1
+    j = 0
+    f = 3
+    
+    Para t en rango(1, n) hacer
+        A[i, j] = 2*x_[t]
+        A[i, j+1] = 1
+        A[i, f] = -2*x_[t]
+        A[i, f+1] = -1
+        i += 1
+        j += 3
+        f += 3
+    
+    A[i, 0] = 2
+    coeficientes = resolver sistema de ecuaciones lineales(A, b)
+    d = longitud(coeficientes) / 3
+    intd = convertir a entero(d)
+    Polinomios = lista vacía
+    errores_absolutos = lista vacía
+    errores_relativos = lista vacía
+    NumPol = 1
+    temp = 0
+    
+    Para g en rango(0, intd) hacer
+        polinomio = "Polinomio " + convertir a cadena(NumPol) + ": " + convertir a cadena(coeficientes[temp]) + "x^2 + " + convertir a cadena(coeficientes[temp+1]) + "x + " + convertir a cadena(coeficientes[temp+2])
+        Agregar polinomio a Polinomios
+        NumPol += 1
+        temp += 3
+    
+    # Calcular errores
+    Si Err == 1 entonces
+        Para j en rango(longitud(x_)) hacer
+            polinomio_actual = coeficientes[j//2*3:j//2*3+3]
+            x_actual = x_[j]
+            y_real = y_[j]
+            y_interpolado = evaluar polinomio_actual con x_actual
+            error_absoluto = valor absoluto(y_real - y_interpolado)
+            error_relativo = error_absoluto / valor absoluto(y_real)
+            Agregar error_absoluto a errores_absolutos
+            Agregar error_relativo a errores_relativos
+    
+        Devolver Polinomios, errores_absolutos
+    Sino Si Err == 2 entonces
+        Para j en rango(longitud(x_)) hacer
+            polinomio_actual = coeficientes[j//2*3:j//2*3+3]
+            x_actual = x_[j]
+            y_real = y_[j]
+            y_interpolado = evaluar polinomio_actual con x_actual
+            error_absoluto = valor absoluto(y_real - y_interpolado)
+            error_relativo = error_absoluto / valor absoluto(y_real)
+            Agregar error_absoluto a errores_absolutos
+            Agregar error_relativo a errores_relativos
+    
+        Devolver Polinomios, errores_relativos
+    Sino
+        Devolver "El valor ingresado para los errores no corresponde a ninguno de los errores que se pueden solicitar"
