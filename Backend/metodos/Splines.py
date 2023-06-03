@@ -90,4 +90,4 @@ def SplinesCuadratico(x_, y_, Err):
     
         return ({"Polynomials: ":Polinomios, "Relative errors: ":errores_relativos})
     else:
-        return "The value entered for the errors does not correspond to any of the errors that I know can request"
+        return "Invalid value for parameter Err. It should be 1 (absolute error) or 2 (relative error)."
